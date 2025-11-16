@@ -76,3 +76,66 @@ footer {
   font-size: 0.9rem;
   color: #888;
 }
+/* --- Start Screen --- */
+.start-screen h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.start-screen .card {
+  margin-bottom: 25px;
+  text-align: left; /* 카드 내부 텍스트 좌측 정렬 */
+}
+
+.start-screen .card h3 {
+  font-size: 1.4rem;
+  color: #ff6b6b; /* 기획안 메인 컬러 */
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.start-screen .card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Category Buttons Layout */
+.category-buttons {
+  display: flex;
+  flex-wrap: wrap; /* 버튼이 많아지면 다음 줄로 */
+  gap: 10px; /* 버튼 사이 간격 */
+}
+
+.category-buttons button {
+  flex-grow: 1; /* 가능한 공간 채우기 */
+  flex-basis: 120px; /* 버튼 최소 너비 */
+  background-color: #f0f0f0;
+  color: #444;
+  font-weight: 600;
+}
+
+.category-buttons button:hover {
+  background-color: #e0e0e0;
+}
+
+/* Quiz Mode Buttons */
+.quiz-mode button {
+  background-color: #4ecdc4; /* 기획안 보조 컬러 */
+}
+
+.quiz-mode button:hover {
+  background-color: #45b7af;
+}
+
+/* 비활성화 버튼 스타일 */
+button:disabled {
+  background-color: #ccc;
+  color: #777;
+  cursor: not-allowed;
+}
+button:disabled:hover {
+  background-color: #ccc;
+}

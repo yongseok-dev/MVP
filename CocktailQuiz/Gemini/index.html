@@ -16,12 +16,44 @@
       </header>
 
       <main>
-        <div v-if="currentScreen === 'start'">
-          <h2>학습 모드 선택</h2>
-          <div class="card">
-            <button @click="startQuiz('all', 40)">전체 학습 (40문제)</button>
-            <button @click="startQuiz('random', 10)">랜덤 10문제</button>
-            <button @click="startQuiz('random', 20)">랜덤 20문제</button>
+        <div v-if="currentScreen === 'start'" class="start-screen">
+          <h2>🚀 학습 모드 선택</h2>
+
+          <div class="card quiz-mode">
+            <h3>랜덤 퀴즈</h3>
+            <p>원하는 개수만큼 칵테일을 랜덤 출제합니다.</p>
+            <button
+              @click="startQuiz('random', 10)"
+              :disabled="cocktails.length === 0"
+            >
+              랜덤 10문제
+            </button>
+            <button
+              @click="startQuiz('random', 20)"
+              :disabled="cocktails.length === 0"
+            >
+              랜덤 20문제
+            </button>
+            <button
+              @click="startQuiz('all', totalCocktailCount)"
+              :disabled="totalCocktailCount === 0"
+            >
+              전체 학습 ({{ totalCocktailCount }}문제)
+            </button>
+          </div>
+
+          <div class="card category-mode">
+            <h3>🗂️ 베이스별 학습</h3>
+            <p>특정 기주(Base) 칵테일만 학습합니다.</p>
+            <div class="category-buttons">
+              <button
+                v-for="category in categories"
+                :key="category"
+                @click="startQuiz('base', category)"
+              >
+                {{ category }}
+              </button>
+            </div>
           </div>
         </div>
 
@@ -42,7 +74,9 @@
           <h2>퀴즈 결과</h2>
           <div class="card">
             <p>총 점수: {{ score }} / {{ questionCount }}</p>
-            <p>정답률: {{ (score / questionCount * 100).toFixed(1) }}%</p>
+            <p v-if="questionCount > 0">
+              정답률: {{ (score / questionCount * 100).toFixed(1) }}%
+            </p>
           </div>
           <button @click="restartQuiz">다시 풀기</button>
           <button @click="goToHome">처음으로</button>
