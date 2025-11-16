@@ -10,6 +10,8 @@
 - [OpenAI ChatGPT](./ChatGPT/README.md)
 - [Google Gemini](./ChatGPT/README.md)
 
+4. 종합 결과
+
 ## 최초 프롬프트
 
 ```
