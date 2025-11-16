@@ -15,92 +15,101 @@
         <h1>조주기능사 칵테일 레시피 퀴즈</h1>
       </header>
 
-  <main>
-    <div v-if="currentScreen === 'start'" class="start-screen">
-        <h2>🚀 학습 모드 선택</h2>
-        
-        <div class="card quiz-mode">
+      <main>
+        <div v-if="currentScreen === 'start'" class="start-screen">
+          <h2>🚀 학습 모드 선택</h2>
+
+          <div class="card quiz-mode">
             <h3>랜덤 퀴즈</h3>
             <p>원하는 개수만큼 칵테일을 랜덤 출제합니다.</p>
-            <button @click="startQuiz('random', 10)" :disabled="cocktails.length === 0">
-                랜덤 10문제
+            <button
+              @click="startQuiz('random', 10)"
+              :disabled="cocktails.length === 0"
+            >
+              랜덤 10문제
             </button>
-            <button @click="startQuiz('random', 20)" :disabled="cocktails.length === 0">
-                랜덤 20문제
+            <button
+              @click="startQuiz('random', 20)"
+              :disabled="cocktails.length === 0"
+            >
+              랜덤 20문제
             </button>
-            <button @click="startQuiz('all', totalCocktailCount)" :disabled="totalCocktailCount === 0">
-                전체 학습 ({{ totalCocktailCount }}문제)
+            <button
+              @click="startQuiz('all', totalCocktailCount)"
+              :disabled="totalCocktailCount === 0"
+            >
+              전체 학습 ({{ totalCocktailCount }}문제)
             </button>
-        </div>
+          </div>
 
-        <div class="card category-mode">
+          <div class="card category-mode">
             <h3>🗂️ 베이스별 학습</h3>
             <p>특정 기주(Base) 칵테일만 학습합니다.</p>
             <div class="category-buttons">
-                <button v-for="category in categories" 
-                        :key="category" 
-                        @click="startQuiz('base', category)">
-                    {{ category }}
-                </button>
+              <button
+                v-for="category in categories"
+                :key="category"
+                @click="startQuiz('base', category)"
+              >
+                {{ category }}
+              </button>
             </div>
+          </div>
         </div>
-    </div>
 
-    <div v-if="currentScreen === 'quiz'" class="quiz-screen">
-        
-        <p class="progress-text">현재 문제 {{ currentQuestionIndex + 1 }} / {{ questionCount }}</p>
+        <div v-if="currentScreen === 'quiz'" class="quiz-screen">
+          <div class="progress-bar-container">
+            <div
+              class="progress-bar-inner"
+              :style="{ width: (currentQuestionIndex + 1) / questionCount * 100 + '%' }"
+            ></div>
+          </div>
+          <p class="progress-text">
+            현재 문제 {{ currentQuestionIndex + 1 }} / {{ questionCount }}
+          </p>
 
-        <div class="card quiz-card" v-if="currentQuestion">
+          <div class="card quiz-card" v-if="currentQuestion">
             <span class="quiz-type-badge">{{ currentQuestion.type }}</span>
             <h3>{{ currentQuestion.text }}</h3>
-            
+
             <div class="answer-buttons">
-                <button
-                    v-for="(option, index) in currentQuestion.options"
-                    :key="index"
-                    @click="checkAnswer(option)"
-                    :disabled="showFeedback" 
-                    >
-                    {{ option }}
-                </button>
+              <button
+                v-for="(option, index) in currentQuestion.options"
+                :key="index"
+                @click="checkAnswer(option)"
+                :disabled="showFeedback"
+                :class="{
+                        'correct': showFeedback && option === currentQuestion.correctAnswer,
+                        'incorrect': showFeedback && selectedAnswer === option && option !== currentQuestion.correctAnswer
+                    }"
+              >
+                {{ option }}
+              </button>
             </div>
+          </div>
 
-            <div v-if="showFeedback" class="feedback">
-                <p v-if="selectedAnswer === currentQuestion.correctAnswer" class="correct">
-                    ✅ 정답입니다!
-                </p>
-                <p v-else class="incorrect">
-                    ❌ 틀렸습니다. (정답: {{ currentQuestion.correctAnswer }})
-                </p>
-            </div>
-        </div>
+          <button v-if="showFeedback" @click="nextQuestion" class="next-button">
+            {{ (currentQuestionIndex < questionCount - 1) ? '다음 문제' : '결과
+            보기' }}
+          </button>
 
-        <button 
-            @click="nextQuestion" 
-            vNext-button"
-            >
-            {{ (currentQuestionIndex < questionCount - 1) ? '다음 문제' : '결과 보기' }}
-        </button>
-        
-        <button 
-            v-if="!showFeedback"
-            class="next-button"
-            disabled
-            >
+          <button v-if="!showFeedback" class="next-button" disabled>
             (답을 선택하세요)
-        </button>
-    </div>
-
-    <div v-if="currentScreen === 'result'">
-        <h2>퀴즈 결과</h2>
-        <div class="card">
-            <p>총 점수: {{ score }} / {{ questionCount }}</p>
-            <p v-if="questionCount > 0">정답률: {{ (score / questionCount * 100).toFixed(1) }}%</p>
+          </button>
         </div>
-        <button @click="restartQuiz">다시 풀기</button>
-        <button @click="goToHome">처음으로</button>
-    </div>
-</main>
+
+        <div v-if="currentScreen === 'result'">
+          <h2>퀴즈 결과</h2>
+          <div class="card">
+            <p>총 점수: {{ score }} / {{ questionCount }}</p>
+            <p v-if="questionCount > 0">
+              정답률: {{ (score / questionCount * 100).toFixed(1) }}%
+            </p>
+          </div>
+          <button @click="restartQuiz">다시 풀기</button>
+          <button @click="goToHome">처음으로</button>
+        </div>
+      </main>
 
       <footer>
         <p>&copy; 2025 Cocktail Quiz. All rights reserved.</p>
