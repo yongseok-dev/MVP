@@ -89,8 +89,8 @@
           </div>
 
           <button v-if="showFeedback" @click="nextQuestion" class="next-button">
-            {{ (currentQuestionIndex < questionCount - 1) ? '다음 문제' : '결과
-            보기' }}
+            {{ (currentQuestionIndex < questionCount - 1) ? '다음 문제' :
+            "결과보기" }}
           </button>
 
           <button v-if="!showFeedback" class="next-button" disabled>
@@ -98,16 +98,54 @@
           </button>
         </div>
 
-        <div v-if="currentScreen === 'result'">
-          <h2>퀴즈 결과</h2>
-          <div class="card">
-            <p>총 점수: {{ score }} / {{ questionCount }}</p>
-            <p v-if="questionCount > 0">
-              정답률: {{ (score / questionCount * 100).toFixed(1) }}%
-            </p>
+        <div v-if="currentScreen === 'result'" class="result-screen">
+          <h2>✨ 퀴즈 결과 분석</h2>
+
+          <div class="card result-summary">
+            <h3>최종 점수: {{ score }} / {{ questionCount }}</h3>
+            <p class="score-percentage">{{ scorePercentage }}%</p>
+            <div :class="['encouragement-badge', encouragementMessage.color]">
+              {{ encouragementMessage.text }}
+            </div>
           </div>
-          <button @click="restartQuiz">다시 풀기</button>
-          <button @click="goToHome">처음으로</button>
+
+          <div class="card error-note" v-if="incorrectAnswers.length > 0">
+            <h3>❌ 틀린 문제 복습 ({{ incorrectAnswers.length }}개)</h3>
+
+            <div
+              v-for="(answer, index) in incorrectAnswers"
+              :key="index"
+              class="error-item"
+            >
+              <p class="error-question">
+                Q{{ index + 1 }}. {{ answer.question }} ({{ answer.cocktail }})
+              </p>
+              <p class="error-detail">
+                <span
+                  >선택:
+                  <span class="user-selected">{{ answer.selected }}</span></span
+                >
+                |
+                <span
+                  >정답:
+                  <span class="correct-answer">{{ answer.correct }}</span></span
+                >
+              </p>
+            </div>
+          </div>
+          <div class="card error-note" v-else>
+            <h3>✅ 완벽합니다! 만점입니다!</h3>
+            <p>틀린 문제가 없습니다. 바로 실전으로 넘어가세요!</p>
+          </div>
+
+          <div class="result-actions">
+            <button @click="goToHome" class="main-button">
+              홈으로 돌아가기
+            </button>
+            <button @click="restartQuiz" class="secondary-button">
+              다시 풀기 (새로운 문제)
+            </button>
+          </div>
         </div>
       </main>
 

@@ -40,6 +40,43 @@ createApp({
     totalCocktailCount() {
       return this.cocktails.length;
     },
+
+    // 점수 백분율 계산
+    scorePercentage() {
+      if (this.questionCount === 0) return 0;
+      return ((this.score / this.questionCount) * 100).toFixed(0); // 정수형으로 반올림
+    },
+
+    // 틀린 문제 목록 필터링
+    incorrectAnswers() {
+      return this.userAnswers.filter((a) => !a.isCorrect);
+    },
+
+    // 점수대별 격려 메시지 생성
+    encouragementMessage() {
+      const percentage = parseFloat(this.scorePercentage);
+      if (percentage >= 90) {
+        return {
+          text: "🎉 합격권! 칵테일 마스터십니다! 이대로 쭉!",
+          color: "success",
+        };
+      } else if (percentage >= 70) {
+        return {
+          text: "👍 우수! 조금만 다듬으면 완벽합니다. 다음엔 만점!",
+          color: "info",
+        };
+      } else if (percentage >= 50) {
+        return {
+          text: "💪 분발! 핵심 칵테일 재료/기법을 집중적으로 외워보세요.",
+          color: "warning",
+        };
+      } else {
+        return {
+          text: "🔥 재도전! 기본기가 부족해요. 베이스별 학습이 필요합니다.",
+          color: "danger",
+        };
+      }
+    },
   },
 
   // ----------------
