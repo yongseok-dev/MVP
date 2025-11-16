@@ -7,7 +7,7 @@ createApp({
   data() {
     return {
       cocktails: [], // 원본 칵테일 데이터
-      categories: [], // 베이스별 카테고리 목록 (e.g., ['진', '럼', '보드카'])
+      categories: [], // 베이스별 카테고리 목록
 
       // 퀴즈 상태
       currentScreen: "start", // 'start', 'quiz', 'result'
@@ -20,9 +20,16 @@ createApp({
       score: 0,
 
       // 문제 풀이
-      currentQuestion: null,
-      selectedAnswer: null,
-      showFeedback: false,
+      currentQuestion: {
+        // 현재 문제 객체
+        text: "",
+        options: [],
+        correctAnswer: "",
+        cocktailName: "",
+        type: "",
+      },
+      selectedAnswer: null, // 사용자가 선택한 답
+      showFeedback: false, // 정답/오답 피드백 표시 여부
     };
   },
 
@@ -30,7 +37,6 @@ createApp({
   // 계산된 속성 (computed)
   // ----------------
   computed: {
-    // 데이터 로드 후 총 칵테일 개수 계산
     totalCocktailCount() {
       return this.cocktails.length;
     },
@@ -41,9 +47,7 @@ createApp({
   // ----------------
   methods: {
     /**
-     * 퀴즈 시작
-     * @param {string} mode - 'random', 'all', 'base'
-     * @param {string|number} param - 문제 개수(number) 또는 카테고리명(string)
+     * 퀴즈 시작 (수정됨)
      */
     startQuiz(mode, param) {
       this.currentQuestionIndex = 0;
@@ -51,23 +55,19 @@ createApp({
       this.userAnswers = [];
       this.quizList = [];
 
-      let fullList = [...this.cocktails]; // 원본 배열 복사
+      let fullList = [...this.cocktails];
 
       if (mode === "random") {
-        // 랜덤 셔플 후 param 개수만큼 자르기
         this.quizList = this.shuffleArray(fullList).slice(0, param);
-        this.questionCount = this.quizList.length;
       } else if (mode === "all") {
-        // 전체 목록 셔플
         this.quizList = this.shuffleArray(fullList);
-        this.questionCount = this.quizList.length;
       } else if (mode === "base") {
-        // param (e.g., '진')으로 필터링 후 셔플
         this.quizList = this.shuffleArray(
           fullList.filter((c) => c.base === param)
         );
-        this.questionCount = this.quizList.length;
       }
+
+      this.questionCount = this.quizList.length;
 
       console.log(`퀴즈 시작: ${mode} (${param}), ${this.questionCount} 문제`);
 
@@ -78,9 +78,164 @@ createApp({
         return;
       }
 
-      // TODO: 프롬프트 4에서 generateQuestion() 호출
-      // this.generateQuestion();
+      // 첫 번째 문제 생성
+      this.generateQuestion();
       this.currentScreen = "quiz";
+    },
+
+    /**
+     * 퀴즈 문제 생성 (신규)
+     */
+    generateQuestion() {
+      // 1. 현재 문제 칵테일 가져오기
+      const cocktail = this.quizList[this.currentQuestionIndex];
+
+      // 2. 퀴즈 유형 랜덤 선택
+      // 'ingredients' 유형을 제외 (프롬프트 4 기획안에는 4가지 유형이지만, 재료는 오답 생성이 복잡하여 3가지로 단순화)
+      // 추후 'ingredients' 추가 가능
+      const quizTypes = ["method", "glass", "garnish"];
+      const randomType =
+        quizTypes[Math.floor(Math.random() * quizTypes.length)];
+
+      let questionText = "";
+      let correctAnswer = "";
+      let options = [];
+      let sourceArray = []; // 오답 선택지 소스
+
+      // 3. 퀴즈 유형별 문제 및 정답 설정
+      switch (randomType) {
+        case "method":
+          questionText = `Q. '${cocktail.name_ko}' 칵테일의 조주 기법은?`;
+          correctAnswer = cocktail.method;
+          // 모든 조주 기법 목록
+          sourceArray = ["쉐이크", "스터", "빌드", "블렌드", "플루트"];
+          break;
+        case "glass":
+          questionText = `Q. '${cocktail.name_ko}' 칵테일을 담는 글라스는?`;
+          correctAnswer = cocktail.glass;
+          // 모든 칵테일의 글라스 목록 (중복 제거)
+          sourceArray = [...new Set(this.cocktails.map((c) => c.glass))];
+          break;
+        case "garnish":
+          questionText = `Q. '${cocktail.name_ko}' 칵테일의 가니쉬(장식)는?`;
+          correctAnswer = cocktail.garnish || "없음"; // 가니쉬가 없는 경우 '없음'으로 처리
+          // 모든 칵테일의 가니쉬 목록 (중복 제거)
+          sourceArray = [
+            ...new Set(this.cocktails.map((c) => c.garnish || "없음")),
+          ];
+          break;
+      }
+
+      // 4. 정답 + 오답 선택지 3개 생성
+      options = this.getDistractors(correctAnswer, sourceArray, 4);
+
+      // 5. 현재 문제 상태 업데이트
+      this.currentQuestion = {
+        text: questionText,
+        options: this.shuffleArray(options),
+        correctAnswer: correctAnswer,
+        cocktailName: cocktail.name_ko,
+        type: randomType,
+      };
+
+      // 6. 피드백 상태 리셋
+      this.selectedAnswer = null;
+      this.showFeedback = false;
+    },
+
+    /**
+     * 오답 선택지 생성 헬퍼 (신규)
+     * @param {string} correctAnswer - 정답
+     * @param {Array<string>} sourceArray - 오답을 가져올 원본 배열
+     * @param {number} totalOptions - 총 선택지 개수 (e.g., 4)
+     * @returns {Array<string>} - 정답이 포함된, 셔플되지 않은 선택지 배열
+     */
+    getDistractors(correctAnswer, sourceArray, totalOptions) {
+      let options = [correctAnswer];
+      let shuffledSource = this.shuffleArray([...sourceArray]);
+
+      for (let item of shuffledSource) {
+        if (options.length >= totalOptions) break;
+        // 정답이 아니고, 이미 옵션에 포함되지 않은 항목만 추가
+        if (item !== correctAnswer && !options.includes(item)) {
+          options.push(item);
+        }
+      }
+
+      // 만약 원본 소스(sourceArray)의 유니크한 아이템이 4개 미만일 경우
+      while (
+        options.length < totalOptions &&
+        options.length < sourceArray.length
+      ) {
+        let emergencyOption = sourceArray.find(
+          (item) => !options.includes(item)
+        );
+        if (emergencyOption) {
+          options.push(emergencyOption);
+        } else {
+          break; // 더 이상 추가할 유니크 아이템이 없음
+        }
+      }
+
+      return options;
+    },
+
+    /**
+     * 답안 제출 (신규)
+     */
+    checkAnswer(selectedOption) {
+      if (this.showFeedback) return; // 이미 답을 선택함
+
+      this.selectedAnswer = selectedOption;
+      this.showFeedback = true; // 피드백 UI 표시 (Prompt 5에서 스타일링)
+
+      if (selectedOption === this.currentQuestion.correctAnswer) {
+        this.score++;
+        console.log("정답!");
+      } else {
+        console.log("오답!");
+      }
+
+      // 결과 저장 (Prompt 6에서 사용)
+      this.userAnswers.push({
+        question: this.currentQuestion.text,
+        selected: selectedOption,
+        correct: this.currentQuestion.correctAnswer,
+        cocktail: this.currentQuestion.cocktailName,
+        isCorrect: selectedOption === this.currentQuestion.correctAnswer,
+      });
+    },
+
+    /**
+     * 다음 문제로 이동 (수정됨)
+     */
+    nextQuestion() {
+      // 답을 선택해야만 다음으로 넘어감
+      if (!this.showFeedback) {
+        alert("답을 선택해주세요!");
+        return;
+      }
+
+      if (this.currentQuestionIndex < this.questionCount - 1) {
+        this.currentQuestionIndex++;
+        this.generateQuestion(); // 다음 문제 생성
+      } else {
+        // 퀴즈 종료
+        this.currentScreen = "result";
+      }
+    },
+
+    /**
+     * 다시 풀기 (수정됨)
+     * - 마지막 퀴즈 설정을 기억하는 대신, 홈으로 보냅니다.
+     */
+    restartQuiz() {
+      this.currentScreen = "start";
+    },
+
+    // 처음으로
+    goToHome() {
+      this.currentScreen = "start";
     },
 
     // 배열 셔플 헬퍼 함수 (Fisher-Yates shuffle)
@@ -91,46 +246,19 @@ createApp({
       }
       return array;
     },
-
-    // 다음 문제로 이동
-    nextQuestion() {
-      // TODO: 프롬프트 4에서 답안 체크 로직
-
-      if (this.currentQuestionIndex < this.questionCount - 1) {
-        this.currentQuestionIndex++;
-        // TODO: 다음 문제 생성 (this.generateQuestion())
-      } else {
-        // 퀴즈 종료
-        this.currentScreen = "result";
-      }
-    },
-
-    // 다시 풀기 (모드와 파라미터가 저장되지 않았으므로 홈으로 보냄)
-    restartQuiz() {
-      // TODO: 마지막 퀴즈 설정을 저장했다가 다시 시작하는 로직 (추후)
-      this.currentScreen = "start";
-    },
-
-    // 처음으로
-    goToHome() {
-      this.currentScreen = "start";
-    },
   },
 
   // ----------------
   // 마운트 시 실행 (mounted)
   // ----------------
   mounted() {
-    // 앱이 시작될 때 칵테일 데이터를 로드합니다.
     fetch("js/cocktails.json")
       .then((response) => response.json())
       .then((data) => {
         this.cocktails = data;
         console.log("칵테일 데이터 로드 완료:", this.cocktails.length, "개");
 
-        // 베이스 카테고리 목록 자동 생성
         const bases = data.map((cocktail) => cocktail.base);
-        // 중복 제거 및 가나다순 정렬
         this.categories = [...new Set(bases)].sort();
       })
       .catch((error) => {

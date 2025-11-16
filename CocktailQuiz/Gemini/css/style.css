@@ -139,3 +139,85 @@ button:disabled {
 button:disabled:hover {
   background-color: #ccc;
 }
+/* --- Quiz Screen (Prompt 4 Basic) --- */
+.quiz-screen .card {
+  text-align: left;
+  min-height: 250px;
+}
+
+.progress-text {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.quiz-type-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  background-color: #eee;
+  color: #555;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.quiz-screen h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.answer-buttons button {
+  background-color: #f0f0f0;
+  color: #333;
+  font-weight: 600;
+}
+
+.answer-buttons button:hover:not(:disabled) {
+  background-color: #e0e0e0;
+}
+
+/* 답안 선택 시 비활성화 */
+.answer-buttons button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* --- Feedback (Prompt 5에서 구체화) --- */
+.feedback {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.feedback p {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.feedback .correct {
+  color: #28a745;
+  background-color: #e6f7ec;
+  padding: 10px;
+}
+
+.feedback .incorrect {
+  color: #dc3545;
+  background-color: #fdecea;
+  padding: 10px;
+}
+
+/* --- Next Button --- */
+.next-button {
+  margin-top: 20px;
+  width: 100%;
+  background-color: #ff6b6b; /* 기획안 메인 컬러 */
+}
+
+.next-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
