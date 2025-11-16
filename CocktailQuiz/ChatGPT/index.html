@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>조주기능사 칵테일 퀴즈</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app" class="app-container">
+      <!-- Start Screen -->
+      <section v-if="currentScreen === 'start'" class="start-screen">
+        <h1 class="title">조주기능사 칵테일 퀴즈</h1>
+        <p class="lead">기주 · 기법 · 글라스 · 가니쉬를 빠르게 암기하세요.</p>
+
+        <div class="modes">
+          <button @click="startQuiz('all', 10)">전체 10문제</button>
+          <button @click="startQuiz('all', 20)">전체 20문제</button>
+          <button @click="startQuiz('all', 40)">전체 40문제</button>
+        </div>
+
+        <div class="category-list">
+          <h3>카테고리별 학습</h3>
+          <div class="cats">
+            <button v-for="c in categories" :key="c" @click="startQuiz(c, 20)">
+              {{ c }}
+            </button>
+          </div>
+        </div>
+
+        <div class="footer-note">
+          <small
+            >로컬에서 바로 실행: 이 저장소의 `js/cocktails.json`을
+            불러옵니다.</small
+          >
+        </div>
+      </section>
+
+      <!-- Quiz Screen -->
+      <section v-if="currentScreen === 'quiz'" class="quiz-screen">
+        <div class="top-bar">
+          <div>문제 {{ currentQuestionIndex + 1 }} / {{ questionCount }}</div>
+          <div class="timer" v-if="showTimer">{{ remainingTimeDisplay }}</div>
+        </div>
+
+        <div class="progress">
+          <div
+            class="progress-bar"
+            :style="{ width: progressPercent + '%' }"
+          ></div>
+        </div>
+
+        <div class="question-card">
+          <div class="q-type">문제 유형: {{ currentQuestion.type_ko }}</div>
+          <h2 class="q-text">{{ currentQuestion.text }}</h2>
+
+          <div class="choices">
+            <button
+              v-for="(ch, idx) in currentQuestion.choices"
+              :key="idx"
+              :class="choiceClass(idx)"
+              @click="selectAnswer(idx)"
+            >
+              <div class="choice-label">
+                {{ String.fromCharCode(65 + idx) }}
+              </div>
+              <div class="choice-text">{{ ch }}</div>
+            </button>
+          </div>
+
+          <div class="feedback" v-if="showFeedback">
+            <div v-if="isCorrect">정답입니다! ✓</div>
+            <div v-else>틀렸습니다. 정답: {{ currentQuestion.answerText }}</div>
+          </div>
+
+          <div class="controls">
+            <button :disabled="!answered" @click="nextQuestion">
+              다음 문제
+            </button>
+            <button class="small" @click="quitToStart">처음으로</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Result Screen -->
+      <section v-if="currentScreen === 'result'" class="result-screen">
+        <h2>결과</h2>
+        <p>당신의 점수: {{ score }} / {{ questionCount }}</p>
+        <p>정답률: {{ Math.round((score/questionCount)*100) }}%</p>
+
+        <div class="result-list">
+          <div
+            v-for="(r, idx) in results"
+            :key="idx"
+            class="result-row"
+            :class="{ wrong: !r.correct }"
+          >
+            <div class="r-no">{{ idx + 1 }}.</div>
+            <div class="r-q">{{ r.text }}</div>
+            <div class="r-your">당신: {{ r.your }}</div>
+            <div class="r-ans">정답: {{ r.answer }}</div>
+          </div>
+        </div>
+
+        <div class="result-actions">
+          <button @click="startQuiz(currentCategory, questionCount)">
+            같은 설정으로 다시 풀기
+          </button>
+          <button @click="quitToStart">처음으로</button>
+        </div>
+      </section>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>

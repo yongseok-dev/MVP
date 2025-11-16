@@ -1,0 +1,283 @@
+[
+  {
+    "id": 1,
+    "name": "Margarita",
+    "name_ko": "마가리타",
+    "base": "데킬라",
+    "glass": "칵테일 글라스",
+    "method": "쉐이크",
+    "ingredients": ["데킬라 45ml", "트리플 섹 15ml", "라임주스 15ml"],
+    "garnish": "소금 리밍",
+    "tips": "테두리 소금"
+  },
+  {
+    "id": 2,
+    "name": "Daiquiri",
+    "name_ko": "다이키리",
+    "base": "럼",
+    "glass": "칵테일 글라스",
+    "method": "쉐이크",
+    "ingredients": ["화이트 럼 45ml", "라임주스 25ml", "설탕시럽 15ml"],
+    "garnish": "라임 슬라이스",
+    "tips": "신맛 강조"
+  },
+  {
+    "id": 3,
+    "name": "Mojito",
+    "name_ko": "모히토",
+    "base": "럼",
+    "glass": "하이볼",
+    "method": "빌드",
+    "ingredients": ["화이트 럼 45ml", "라임 1/2", "설탕 2스푼", "민트", "소다"],
+    "garnish": "민트 스프링",
+    "tips": "민트 으깨기"
+  },
+  {
+    "id": 4,
+    "name": "Cosmopolitan",
+    "name_ko": "코스모폴리탄",
+    "base": "보드카",
+    "glass": "칵테일 글라스",
+    "method": "쉐이크",
+    "ingredients": [
+      "보드카 40ml",
+      "트리플 섹 15ml",
+      "크랜베리 주스 30ml",
+      "라임주스 10ml"
+    ],
+    "garnish": "오렌지 필"
+  },
+  {
+    "id": 5,
+    "name": "Martini",
+    "name_ko": "마티니",
+    "base": "진",
+    "glass": "칵테일 글라스",
+    "method": "스터",
+    "ingredients": ["진 60ml", "드라이 베르무트 10ml"],
+    "garnish": "올리브 또는 레몬 필",
+    "tips": "차갑게"
+  },
+  {
+    "id": 6,
+    "name": "Old Fashioned",
+    "name_ko": "올드패션드",
+    "base": "위스키",
+    "glass": "올드패션드 글라스",
+    "method": "스터",
+    "ingredients": [
+      "버번 위스키 60ml",
+      "설탕 1티스푼",
+      "앵거스투라 비터스 2대시"
+    ],
+    "garnish": "오렌지 필",
+    "tips": "저어주기"
+  },
+  {
+    "id": 7,
+    "name": "Manhattan",
+    "name_ko": "맨해튼",
+    "base": "위스키",
+    "glass": "칵테일 글라스",
+    "method": "스터",
+    "ingredients": [
+      "라이 위스키 50ml",
+      "스윗 베르무트 20ml",
+      "앵거스투라 비터스 2대시"
+    ],
+    "garnish": "체리"
+  },
+  {
+    "id": 8,
+    "name": "Whiskey Sour",
+    "name_ko": "위스키 사워",
+    "base": "위스키",
+    "glass": "올드패션드 글라스",
+    "method": "쉐이크",
+    "ingredients": [
+      "버번 45ml",
+      "레몬주스 30ml",
+      "설탕시럽 15ml",
+      "계란흰자(선택)"
+    ],
+    "garnish": "체리"
+  },
+  {
+    "id": 9,
+    "name": "Negroni",
+    "name_ko": "네그로니",
+    "base": "진",
+    "glass": "올드패션드 글라스",
+    "method": "빌드",
+    "ingredients": ["진 30ml", "카미파리 30ml", "스윗 베르무트 30ml"],
+    "garnish": "오렌지 필"
+  },
+  {
+    "id": 10,
+    "name": "Moscow Mule",
+    "name_ko": "모스크바 뮬",
+    "base": "보드카",
+    "glass": "하이볼",
+    "method": "빌드",
+    "ingredients": ["보드카 45ml", "라임 주스 15ml", "진저비어"],
+    "garnish": "라임 웨지"
+  },
+  {
+    "id": 11,
+    "name": "Margarita Frozen",
+    "name_ko": "프라운 마가리타",
+    "base": "데킬라",
+    "glass": "플루트/칵테일 글라스",
+    "method": "블렌드",
+    "ingredients": ["데킬라 45ml", "트리플 섹 15ml", "라임주스 15ml", "얼음"],
+    "garnish": "라임"
+  },
+  {
+    "id": 12,
+    "name": "Gimlet",
+    "name_ko": "김렛",
+    "base": "진",
+    "glass": "칵테일 글라스",
+    "method": "쉐이크",
+    "ingredients": ["진 60ml", "라임주스 15ml", "설탕시럽 7ml"],
+    "garnish": "라임"
+  },
+  {
+    "id": 13,
+    "name": "Long Island Iced Tea",
+    "name_ko": "롱아일랜드 아이스티",
+    "base": "혼합",
+    "glass": "하이볼",
+    "method": "빌드",
+    "ingredients": [
+      "보드카 15ml",
+      "럼 15ml",
+      "데킬라 15ml",
+      "진 15ml",
+      "트리플 섹 15ml",
+      "콜라"
+    ],
+    "garnish": "레몬"
+  },
+  {
+    "id": 14,
+    "name": "Pina Colada",
+    "name_ko": "피냐 콜라다",
+    "base": "럼",
+    "glass": "하이볼",
+    "method": "블렌드",
+    "ingredients": [
+      "화이트 럼 45ml",
+      "코코넛 크림 60ml",
+      "파인애플 주스 90ml",
+      "얼음"
+    ],
+    "garnish": "파인애플"
+  },
+  {
+    "id": 15,
+    "name": "Bloody Mary",
+    "name_ko": "블러디 메리",
+    "base": "보드카",
+    "glass": "하이볼",
+    "method": "빌드",
+    "ingredients": [
+      "보드카 45ml",
+      "토마토 주스",
+      "레몬주스",
+      "우스터 소스",
+      "타바스코"
+    ],
+    "garnish": "셀러리"
+  },
+  {
+    "id": 16,
+    "name": "Sidecar",
+    "name_ko": "사이드카",
+    "base": "브랜디",
+    "glass": "칵테일 글라스",
+    "method": "쉐이크",
+    "ingredients": ["브랜디 50ml", "트리플 섹 20ml", "레몬주스 20ml"],
+    "garnish": "오렌지 필"
+  },
+  {
+    "id": 17,
+    "name": "Aperol Spritz",
+    "name_ko": "아페롤 스프리츠",
+    "base": "와인",
+    "glass": "와인 글라스",
+    "method": "빌드",
+    "ingredients": ["아페롤 60ml", "프로세코", "소다"],
+    "garnish": "오렌지"
+  },
+  {
+    "id": 18,
+    "name": "Screwdriver",
+    "name_ko": "스크류드라이버",
+    "base": "보드카",
+    "glass": "하이볼",
+    "method": "빌드",
+    "ingredients": ["보드카 50ml", "오렌지 주스"],
+    "garnish": "오렌지"
+  },
+  {
+    "id": 19,
+    "name": "Campari & Soda",
+    "name_ko": "캄파리 소다",
+    "base": "리큐르",
+    "glass": "하이볼",
+    "method": "빌드",
+    "ingredients": ["캄파리", "소다"],
+    "garnish": "레몬"
+  },
+  {
+    "id": 20,
+    "name": "Tom Collins",
+    "name_ko": "톰 콜린스",
+    "base": "진",
+    "glass": "하이볼",
+    "method": "쉐이크",
+    "ingredients": ["진 45ml", "레몬주스 30ml", "설탕시럽 15ml", "소다"],
+    "garnish": "레몬"
+  },
+  {
+    "id": 21,
+    "name": "Korean Soju Cocktail",
+    "name_ko": "소주 칵테일",
+    "base": "전통주",
+    "glass": "하이볼",
+    "method": "빌드",
+    "ingredients": ["소주", "과일주스"],
+    "garnish": "과일"
+  },
+  {
+    "id": 22,
+    "name": "Junbug",
+    "name_ko": "준벅",
+    "base": "리큐르",
+    "glass": "하이볼",
+    "method": "블렌드",
+    "ingredients": ["멜론 리큐르", "바나나 리큐르", "파인애플 주스", "얼음"],
+    "garnish": "파인애플"
+  },
+  {
+    "id": 23,
+    "name": "Appletini",
+    "name_ko": "애플티니",
+    "base": "보드카",
+    "glass": "칵테일 글라스",
+    "method": "쉐이크",
+    "ingredients": ["보드카 50ml", "사과 리큐르 30ml", "레몬주스 10ml"],
+    "garnish": "애플 슬라이스"
+  },
+  {
+    "id": 24,
+    "name": "French 75",
+    "name_ko": "프렌치 75",
+    "base": "진",
+    "glass": "플루트",
+    "method": "쉐이크",
+    "ingredients": ["진 30ml", "레몬주스 15ml", "설탕시럽 10ml", "샴페인"],
+    "garnish": "레몬 필"
+  }
+]

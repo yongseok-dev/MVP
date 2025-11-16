@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>조주기능사 칵테일 퀴즈</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app" class="container">
+      <header>
+        <h1>조주기능사 칵테일 레시피 퀴즈</h1>
+      </header>
+
+      <main>
+        <div v-if="currentScreen === 'start'">
+          <h2>학습 모드 선택</h2>
+          <div class="card">
+            <button @click="startQuiz('all', 40)">전체 학습 (40문제)</button>
+            <button @click="startQuiz('random', 10)">랜덤 10문제</button>
+            <button @click="startQuiz('random', 20)">랜덤 20문제</button>
+          </div>
+        </div>
+
+        <div v-if="currentScreen === 'quiz'">
+          <h2>퀴즈 진행</h2>
+          <p>현재 문제 {{ currentQuestionIndex + 1 }} / {{ questionCount }}</p>
+          <div class="card">
+            <h3>Q. 칵테일 문제</h3>
+            <button>선택지 1</button>
+            <button>선택지 2</button>
+            <button>선택지 3</button>
+            <button>선택지 4</button>
+          </div>
+          <button @click="nextQuestion">다음 문제</button>
+        </div>
+
+        <div v-if="currentScreen === 'result'">
+          <h2>퀴즈 결과</h2>
+          <div class="card">
+            <p>총 점수: {{ score }} / {{ questionCount }}</p>
+            <p>정답률: {{ (score / questionCount * 100).toFixed(1) }}%</p>
+          </div>
+          <button @click="restartQuiz">다시 풀기</button>
+          <button @click="goToHome">처음으로</button>
+        </div>
+      </main>
+
+      <footer>
+        <p>&copy; 2025 Cocktail Quiz. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>

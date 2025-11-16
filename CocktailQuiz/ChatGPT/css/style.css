@@ -1,0 +1,147 @@
+/* css/style.css */
+:root {
+  --primary: #ff6b6b;
+  --accent: #4ecdc4;
+  --bg: #f7f7f7;
+  --card: #ffffff;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, "Helvetica Neue", Arial;
+  background: var(--bg);
+  color: #222;
+}
+.app-container {
+  max-width: 900px;
+  margin: 24px auto;
+  padding: 16px;
+}
+.title {
+  margin: 8px 0;
+  font-size: 28px;
+  color: var(--primary);
+}
+.lead {
+  margin: 0 0 16px;
+}
+.start-screen .modes button,
+.cats button {
+  margin: 6px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 0;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+  min-width: 140px;
+}
+.category-list {
+  margin-top: 18px;
+}
+.cats button {
+  background: var(--accent);
+}
+.quiz-screen .top-bar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.progress {
+  height: 8px;
+  background: #e6e6e6;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--primary));
+}
+.question-card {
+  background: var(--card);
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+.q-type {
+  font-size: 13px;
+  color: #666;
+}
+.q-text {
+  margin: 8px 0 16px;
+}
+.choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.choices button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  background: #fafafa;
+  cursor: pointer;
+  min-height: 56px;
+}
+.choice-label {
+  font-weight: 700;
+}
+.choices button.selected {
+  outline: 3px solid rgba(79, 201, 180, 0.18);
+}
+.choices button.correct {
+  background: #e6ffef;
+  border-color: #bff1d6;
+}
+.choices button.wrong {
+  background: #ffecec;
+  border-color: #ffc7c7;
+}
+.feedback {
+  margin-top: 12px;
+  font-weight: 700;
+}
+.controls {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+.controls button {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 0;
+  background: var(--primary);
+  color: #fff;
+}
+.controls button.small {
+  background: #888;
+}
+.result-list {
+  margin-top: 16px;
+}
+.result-row {
+  display: grid;
+  grid-template-columns: 30px 1fr 140px 140px;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 8px;
+  background: #fff;
+  margin-bottom: 6px;
+}
+.result-row.wrong {
+  opacity: 0.9;
+}
+@media (max-width: 600px) {
+  .choices {
+    grid-template-columns: 1fr;
+  }
+  .result-row {
+    grid-template-columns: 24px 1fr;
+  }
+}

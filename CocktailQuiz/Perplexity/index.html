@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>조주기능사 칵테일 레시피 퀴즈</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- 시작 화면 -->
+        <div v-if="currentScreen === 'start'" class="screen start-screen">
+            <div class="container">
+                <div class="header">
+                    <h1>🍹 조주기능사 칵테일 레시피 퀴즈</h1>
+                    <p class="subtitle">40가지 칵테일 완벽 정복!</p>
+                </div>
+
+                <div class="mode-selector">
+                    <h2>학습 모드 선택</h2>
+                    
+                    <!-- 전체 학습 -->
+                    <div class="mode-card" @click="startQuiz('all', 40)">
+                        <div class="mode-icon">📚</div>
+                        <div class="mode-content">
+                            <h3>전체 학습</h3>
+                            <p>40개 칵테일 모두</p>
+                        </div>
+                    </div>
+
+                    <!-- 카테고리별 학습 -->
+                    <div class="mode-card" @click="showCategorySelection = true">
+                        <div class="mode-icon">🏷️</div>
+                        <div class="mode-content">
+                            <h3>베이스별 학습</h3>
+                            <p>카테고리를 선택하세요</p>
+                        </div>
+                    </div>
+
+                    <!-- 랜덤 퀴즈 -->
+                    <div class="mode-card" @click="startQuiz('all', 10)">
+                        <div class="mode-icon">🎲</div>
+                        <div class="mode-content">
+                            <h3>랜덤 10문제</h3>
+                            <p>빠른 학습</p>
+                        </div>
+                    </div>
+
+                    <div class="mode-card" @click="startQuiz('all', 20)">
+                        <div class="mode-icon">🎰</div>
+                        <div class="mode-content">
+                            <h3>랜덤 20문제</h3>
+                            <p>심화 학습</p>
+                        </div>
+                    </div>
+
+                    <!-- 플래시카드 모드 -->
+                    <div class="mode-card" @click="startFlashcard()">
+                        <div class="mode-icon">🎴</div>
+                        <div class="mode-content">
+                            <h3>플래시카드</h3>
+                            <p>암기 학습</p>
+                        </div>
+                    </div>
+
+                    <!-- 오답노트 -->
+                    <div class="mode-card" v-if="wrongAnswers.length > 0" @click="startQuizFromWrong()">
+                        <div class="mode-icon">❌</div>
+                        <div class="mode-content">
+                            <h3>오답노트</h3>
+                            <p>{{wrongAnswers.length}}개 문제</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 통계 정보 -->
+                <div v-if="stats.totalAttempts > 0" class="stats">
+                    <h3>📊 학습 통계</h3>
+                    <div class="stat-info">
+                        <div class="stat-item">
+                            <span class="stat-label">총 시도</span>
+                            <span class="stat-value">{{stats.totalAttempts}}</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">평균 점수</span>
+                            <span class="stat-value">{{(stats.averageScore * 100).toFixed(0)}}%</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">최고 점수</span>
+                            <span class="stat-value">{{(stats.maxScore * 100).toFixed(0)}}%</span>
+                        </div>
+                    </div>
+                    <button @click="resetStats" class="btn-reset">통계 초기화</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카테고리 선택 화면 -->
+        <div v-if="showCategorySelection" class="screen modal-overlay">
+            <div class="modal-content">
+                <h2>베이스 선택</h2>
+                <div class="category-grid">
+                    <div v-for="category in categories" :key="category" class="category-btn"
+                        @click="selectCategory(category)">
+                        {{category}}
+                    </div>
+                </div>
+                <button @click="showCategorySelection = false" class="btn-close">닫기</button>
+            </div>
+        </div>
+
+        <!-- 퀴즈 화면 -->
+        <div v-if="currentScreen === 'quiz'" class="screen quiz-screen">
+            <div class="container">
+                <!-- 상단 정보 -->
+                <div class="quiz-header">
+                    <div class="progress-info">
+                        <span class="question-counter">{{currentQuestionIndex + 1}} / {{quizQuestions.length}}</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" :style="{ width: progressPercentage + '%' }"></div>
+                    </div>
+                </div>
+
+                <!-- 문제 카드 -->
+                <div class="question-card" v-if="currentQuestion">
+                    <div class="question-type">{{currentQuestion.type}}</div>
+                    <div class="question-text">{{currentQuestion.question}}</div>
+                    
+                    <!-- 선택지 -->
+                    <div class="options">
+                        <button v-for="(option, idx) in currentQuestion.options" 
+                                :key="idx"
+                                class="option-btn"
+                                :class="{
+                                    'selected': selectedAnswer === idx,
+                                    'correct': showFeedback && idx === currentQuestion.correctIndex,
+                                    'incorrect': showFeedback && selectedAnswer === idx && idx !== currentQuestion.correctIndex,
+                                    'disabled': showFeedback
+                                }"
+                                @click="selectAnswer(idx)"
+                                :disabled="showFeedback">
+                            {{option}}
+                        </button>
+                    </div>
+
+                    <!-- 피드백 -->
+                    <div v-if="showFeedback" class="feedback" :class="{ 'correct': isCorrect, 'incorrect': !isCorrect }">
+                        <span v-if="isCorrect">✓ 정답입니다!</span>
+                        <span v-else>✗ 틀렸습니다. 정답: {{currentQuestion.options[currentQuestion.correctIndex]}}</span>
+                    </div>
+
+                    <!-- 다음 버튼 -->
+                    <div v-if="showFeedback" class="action-buttons">
+                        <button @click="nextQuestion" class="btn-primary">
+                            {{currentQuestionIndex === quizQuestions.length - 1 ? '결과 보기' : '다음 문제'}}
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 답변 선택 전 안내 -->
+                <div v-if="!showFeedback && selectedAnswer === null" class="hint">
+                    💡 4개의 선택지 중 정답을 선택하세요
+                </div>
+            </div>
+        </div>
+
+        <!-- 플래시카드 모드 -->
+        <div v-if="currentScreen === 'flashcard'" class="screen flashcard-screen">
+            <div class="container">
+                <div class="flashcard-header">
+                    <span class="card-counter">{{currentFlashcardIndex + 1}} / {{filteredCocktails.length}}</span>
+                    <button @click="exitFlashcard" class="btn-exit">종료</button>
+                </div>
+
+                <!-- 플립 카드 -->
+                <div class="flashcard-container">
+                    <div class="flashcard" :class="{ 'flipped': isFlipped }" @click="toggleFlip">
+                        <div class="flashcard-front">
+                            <div class="card-label">🍹</div>
+                            <div class="card-name">{{currentFlashcard.name_ko}}</div>
+                            <div class="card-hint">(클릭하면 뒤집혀요)</div>
+                        </div>
+                        <div class="flashcard-back">
+                            <div class="recipe-info">
+                                <h4>{{currentFlashcard.name_ko}}</h4>
+                                <div class="recipe-line">
+                                    <strong>기주:</strong> {{currentFlashcard.base}}
+                                </div>
+                                <div class="recipe-line">
+                                    <strong>기법:</strong> {{currentFlashcard.method}}
+                                </div>
+                                <div class="recipe-line">
+                                    <strong>글라스:</strong> {{currentFlashcard.glass}}
+                                </div>
+                                <div class="recipe-line">
+                                    <strong>재료:</strong>
+                                    <div class="ingredients-list">
+                                        <div v-for="ingredient in currentFlashcard.ingredients" :key="ingredient">
+                                            • {{ingredient}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="recipe-line">
+                                    <strong>가니쉬:</strong> {{currentFlashcard.garnish}}
+                                </div>
+                                <div v-if="currentFlashcard.tips" class="recipe-line">
+                                    <strong>💡 팁:</strong> {{currentFlashcard.tips}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 네비게이션 -->
+                <div class="flashcard-navigation">
+                    <button @click="prevFlashcard" class="btn-secondary">← 이전</button>
+                    <button @click="nextFlashcard" class="btn-secondary">다음 →</button>
+                </div>
+
+                <!-- 난이도 평가 -->
+                <div class="difficulty-rating">
+                    <button @click="rateFlashcard('easy')" class="difficulty-btn easy">✓ 알고 있어요</button>
+                    <button @click="rateFlashcard('hard')" class="difficulty-btn hard">✗ 모르겠어요</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 결과 화면 -->
+        <div v-if="currentScreen === 'result'" class="screen result-screen">
+            <div class="container">
+                <div class="result-header">
+                    <h2>결과</h2>
+                    <div class="score-box" :class="{ 'excellent': scorePercentage >= 90, 'good': scorePercentage >= 70, 'fair': true }">
+                        <div class="score-number">{{scorePercentage.toFixed(0)}}%</div>
+                        <div class="score-text">
+                            {{scorePercentage >= 90 ? '훌륭합니다!' : scorePercentage >= 70 ? '양호합니다!' : '더 연습이 필요합니다!'}}
+                        </div>
+                        <div class="score-detail">{{score}} / {{quizQuestions.length}} 정답</div>
+                    </div>
+                </div>
+
+                <!-- 카테고리별 성적 -->
+                <div class="category-performance">
+                    <h3>카테고리별 성적</h3>
+                    <div v-for="(categoryScore, base) in performanceByBase" :key="base" class="performance-item">
+                        <span class="base-name">{{base}}</span>
+                        <div class="performance-bar">
+                            <div class="performance-fill" :style="{ width: (categoryScore.correct / categoryScore.total * 100) + '%' }"></div>
+                        </div>
+                        <span class="performance-text">{{categoryScore.correct}}/{{categoryScore.total}}</span>
+                    </div>
+                </div>
+
+                <!-- 결과 상세 -->
+                <div class="result-details">
+                    <h3>{{showOnlyWrong ? '틀린 문제 (' + wrongAnswersDetail.length + '개)' : '전체 결과'}}</h3>
+                    
+                    <div class="toggle-buttons">
+                        <button @click="showOnlyWrong = false" :class="{ 'active': !showOnlyWrong }">전체</button>
+                        <button @click="showOnlyWrong = true" :class="{ 'active': showOnlyWrong }">오답만</button>
+                    </div>
+
+                    <div class="result-list">
+                        <div v-for="(result, idx) in displayedResults" :key="idx" class="result-item" 
+                             :class="{ 'correct': result.isCorrect, 'incorrect': !result.isCorrect }">
+                            <div class="result-number">{{idx + 1}}</div>
+                            <div class="result-content">
+                                <div class="result-question">{{result.question}}</div>
+                                <div class="result-answer">
+                                    <strong>사용자 답:</strong> {{result.userAnswer}}
+                                </div>
+                                <div v-if="!result.isCorrect" class="result-correct-answer">
+                                    <strong>정답:</strong> {{result.correctAnswer}}
+                                </div>
+                            </div>
+                            <div class="result-icon">{{result.isCorrect ? '✓' : '✗'}}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 액션 버튼 -->
+                <div class="action-buttons">
+                    <button @click="retakeQuiz" class="btn-primary">다시 풀기</button>
+                    <button @click="goHome" class="btn-secondary">처음으로</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
