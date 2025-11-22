@@ -34,63 +34,64 @@ const QUESTION_TYPES = {
 // ====================================
 const app = createApp({
   template: `
-    <div class="app-container">
-      <div class="header">
-        <h1>🍹 조주기능사 칵테일 레시피 퀴즈</h1>
-        <p class="subtitle">40가지 칵테일을 완벽하게 정복하세요!</p>
-      </div>
+<div class="app-container">
+  <div class="header">
+    <h1>🍹 조주기능사 칵테일 레시피 퀴즈</h1>
+    <p class="subtitle">40가지 칵테일을 완벽하게 정복하세요!</p>
+  </div>
 
-      <div class="container" v-if="currentScreen === SCREENS.LOADING">
-        <LoadingScreen :loading-message="loadingMessage" />
-      </div>
+  <div class="container" v-if="currentScreen === SCREENS.LOADING">
+    <LoadingScreen :loading-message="loadingMessage" />
+  </div>
 
-      <div class="container" v-else-if="errorMessage">
-        <ErrorScreen :error="errorMessage" @retry="retryLoadData" />
-      </div>
+  <div class="container" v-else-if="errorMessage">
+    <ErrorScreen :error="errorMessage" @retry="retryLoadData" />
+  </div>
 
-      <div class="container" v-else-if="currentScreen === SCREENS.HOME">
-        <HomeScreen 
-          :cocktails="cocktails"
-          :stats="stats"
-          @start-quiz="startQuiz"
-          @start-study="startStudy"
-        />
-      </div>
+  <div class="container" v-else-if="currentScreen === SCREENS.HOME">
+    <HomeScreen
+      :cocktails="cocktails"
+      :stats="stats"
+      @start-quiz="startQuiz"
+      @start-study="startStudy"
+    />
+  </div>
 
-      <div v-else-if="currentScreen === SCREENS.STUDY">
-        <FlashcardStudy 
-          :cocktails="cocktails"
-          :study-mode="studyMode"
-          :cocktail-info="cocktailInfo"
-          @back-home="exitStudy"
-        />
-      </div>
+  <div v-else-if="currentScreen === SCREENS.STUDY">
+    <FlashcardStudy
+      :cocktails="cocktails"
+      :study-mode="studyMode"
+      :cocktail-info="cocktailInfo"
+      @back-home="exitStudy"
+    />
+  </div>
 
-      <div class="quiz-screen" v-else-if="currentScreen === SCREENS.QUIZ">
-        <QuizScreen 
-          :current-question="currentQuestion"
-          :question-index="currentQuestionIndex"
-          :total-questions="quizQuestions.length"
-          :answered="answered"
-          :selected-answer="selectedAnswer"
-          :feedback="feedback"
-          @answer="submitAnswer"
-          @next="nextQuestion"
-          @skip="skipQuestion"
-          @exit="exitQuiz"
-        />
-      </div>
+  <div class="quiz-screen" v-else-if="currentScreen === SCREENS.QUIZ">
+    <QuizScreen
+      :current-question="currentQuestion"
+      :question-index="currentQuestionIndex"
+      :total-questions="quizQuestions.length"
+      :answered="answered"
+      :selected-answer="selectedAnswer"
+      :feedback="feedback"
+      :cocktail-info="cocktailInfo"
+      @answer="submitAnswer"
+      @next="nextQuestion"
+      @skip="skipQuestion"
+      @exit="exitQuiz"
+    />
+  </div>
 
-      <div class="result-screen" v-else-if="currentScreen === SCREENS.RESULT">
-        <ResultScreen 
-          :score="score"
-          :total="quizQuestions.length"
-          :results="quizResults"
-          :stats="stats"
-          @back-home="backToHome"
-        />
-      </div>
-    </div>
+  <div class="result-screen" v-else-if="currentScreen === SCREENS.RESULT">
+    <ResultScreen
+      :score="score"
+      :total="quizQuestions.length"
+      :results="quizResults"
+      :stats="stats"
+      @back-home="backToHome"
+    />
+  </div>
+</div>
   `,
 
   setup() {
@@ -538,14 +539,26 @@ const app = createApp({
 app.component("LoadingScreen", {
   props: ["loadingMessage"],
   template: `
-    <div class="screen text-center">
-      <div style="padding: 60px 30px;">
-        <div style="font-size: 3rem; margin-bottom: 20px; animation: spin 1s linear infinite;">⏳</div>
-        <h2 style="font-size: 1.5rem; color: var(--dark-color); margin-bottom: 20px;">{{ loadingMessage }}</h2>
-        <p style="color: #999; font-size: 1rem;">잠시만 기다려주세요...</p>
-      </div>
+<div class="screen text-center">
+  <div style="padding: 60px 30px">
+    <div
+      style="
+        font-size: 3rem;
+        margin-bottom: 20px;
+        animation: spin 1s linear infinite;
+      "
+    >
+      ⏳
     </div>
-  `,
+    <h2
+      style="font-size: 1.5rem; color: var(--dark-color); margin-bottom: 20px"
+    >
+      {{ loadingMessage }}
+    </h2>
+    <p style="color: #999; font-size: 1rem">잠시만 기다려주세요...</p>
+  </div>
+</div>
+`,
 });
 
 // ====================================
@@ -555,15 +568,28 @@ app.component("ErrorScreen", {
   props: ["error"],
   emits: ["retry"],
   template: `
-    <div class="screen text-center">
-      <div style="padding: 60px 30px;">
-        <div style="font-size: 3rem; margin-bottom: 20px;">❌</div>
-        <h2 style="font-size: 1.5rem; color: var(--dark-color); margin-bottom: 20px;">오류 발생</h2>
-        <p style="color: #999; font-size: 0.95rem; margin-bottom: 30px; white-space: pre-wrap;">{{ error }}</p>
-        <button class="btn btn-primary" @click="$emit('retry')">다시 시도</button>
-      </div>
-    </div>
-  `,
+<div class="screen text-center">
+  <div style="padding: 60px 30px">
+    <div style="font-size: 3rem; margin-bottom: 20px">❌</div>
+    <h2
+      style="font-size: 1.5rem; color: var(--dark-color); margin-bottom: 20px"
+    >
+      오류 발생
+    </h2>
+    <p
+      style="
+        color: #999;
+        font-size: 0.95rem;
+        margin-bottom: 30px;
+        white-space: pre-wrap;
+      "
+    >
+      {{ error }}
+    </p>
+    <button class="btn btn-primary" @click="$emit('retry')">다시 시도</button>
+  </div>
+</div>
+`,
 });
 
 // ====================================
@@ -573,121 +599,119 @@ app.component("HomeScreen", {
   props: ["cocktails", "stats"],
   emits: ["start-quiz", "start-study"],
   template: `
-        <div class="screen">
+<div class="screen">
+  <!-- 학습 통계 -->
+  <div class="stats">
+    <h3>📊 학습 현황</h3>
+    <div class="stat-info">
+      <div class="stat-item">
+        <span class="stat-label">총 풀이 문제</span>
+        <span class="stat-value">{{ stats.totalAttempts }}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">정답 개수</span>
+        <span class="stat-value">{{ stats.correctAnswers }}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">정답률</span>
+        <span class="stat-value">{{ stats.accuracy }}%</span>
+      </div>
+    </div>
+  </div>
 
-            <!-- 학습 통계 -->
-            <div class="stats">
-                <h3>📊 학습 현황</h3>
-                <div class="stat-info">
-                    <div class="stat-item">
-                        <span class="stat-label">총 풀이 문제</span>
-                        <span class="stat-value">{{ stats.totalAttempts }}</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-label">정답 개수</span>
-                        <span class="stat-value">{{ stats.correctAnswers }}</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-label">정답률</span>
-                        <span class="stat-value">{{ stats.accuracy }}%</span>
-                    </div>
-                </div>
-            </div>
+  <!-- 학습 선택 -->
+  <div class="study-selector">
+    <h2>📚 칵테일 알아보기</h2>
+    <p style="text-align: center; color: #999; margin-bottom: 20px">
+      카드 형태로 칵테일 정보를 학습하세요!
+    </p>
+    <div class="mode-grid">
+      <div class="mode-card" @click="$emit('start-study', 'base')">
+        <div class="mode-icon">🥃</div>
+        <h3>베이스별 학습</h3>
+        <p>기주별로 정리된 칵테일</p>
+      </div>
+      <div class="mode-card" @click="$emit('start-study', 'glass')">
+        <div class="mode-icon">🍸</div>
+        <h3>글라스별 학습</h3>
+        <p>글라스 종류별 칵테일</p>
+      </div>
+      <div class="mode-card" @click="$emit('start-study', 'method')">
+        <div class="mode-icon">🔄</div>
+        <h3>조주기법별 학습</h3>
+        <p>조주법별 칵테일</p>
+      </div>
+    </div>
+  </div>
 
-            <!-- 학습 선택 -->
-            <div class="study-selector">
-                <h2>📚 칵테일 알아보기</h2>
-                <p style="text-align: center; color: #999; margin-bottom: 20px;">카드 형태로 칵테일 정보를 학습하세요!</p>
-                <div class="mode-grid">
-                    <div class="mode-card" @click="$emit('start-study', 'base')">
-                        <div class="mode-icon">🥃</div>
-                        <h3>베이스별 학습</h3>
-                        <p>기주별로 정리된 칵테일</p>
-                    </div>
-                    <div class="mode-card" @click="$emit('start-study', 'glass')">
-                        <div class="mode-icon">🍸</div>
-                        <h3>글라스별 학습</h3>
-                        <p>글라스 종류별 칵테일</p>
-                    </div>
-                    <div class="mode-card" @click="$emit('start-study', 'method')">
-                        <div class="mode-icon">🔄</div>
-                        <h3>조주기법별 학습</h3>
-                        <p>조주법별 칵테일</p>
-                    </div>
-                </div>
-            </div>
+  <!-- 퀴즈 모드 선택 -->
+  <div class="mode-selector">
+    <h2>📝 퀴즈 모드</h2>
+    <div class="mode-grid">
+      <div class="mode-card" @click="$emit('start-quiz', 'all')">
+        <div class="mode-icon">📖</div>
+        <h3>전체 학습</h3>
+        <p>{{ cocktails.length * 5 }}개 문제</p>
+      </div>
+      <div class="mode-card" @click="$emit('start-quiz', 'random10')">
+        <div class="mode-icon">🎲</div>
+        <h3>랜덤 10문제</h3>
+        <p>빠른 복습</p>
+      </div>
+      <div class="mode-card" @click="$emit('start-quiz', 'random20')">
+        <div class="mode-icon">🎰</div>
+        <h3>랜덤 20문제</h3>
+        <p>집중 모드</p>
+      </div>
+    </div>
+  </div>
 
-            <!-- 퀴즈 모드 선택 -->
-            <div class="mode-selector">
-                <h2>📝 퀴즈 모드</h2>
-                <div class="mode-grid">
-                    <div class="mode-card" @click="$emit('start-quiz', 'all')">
-                        <div class="mode-icon">📖</div>
-                        <h3>전체 학습</h3>
-                        <p>{{ cocktails.length * 5 }}개 문제</p>
-                    </div>
-                    <div class="mode-card" @click="$emit('start-quiz', 'random10')">
-                        <div class="mode-icon">🎲</div>
-                        <h3>랜덤 10문제</h3>
-                        <p>빠른 복습</p>
-                    </div>
-                    <div class="mode-card" @click="$emit('start-quiz', 'random20')">
-                        <div class="mode-icon">🎰</div>
-                        <h3>랜덤 20문제</h3>
-                        <p>집중 모드</p>
-                    </div>
-                </div>
-            </div>
+  <!-- 주류 검색 섹션
+  <div class="liquor-search-section">
+    <h3>🛍️ 재료 검색 (DailyShot)</h3>
+    <div class="search-container">
+      <input
+        v-model="searchQuery"
+        type="text"
+        class="search-input"
+        placeholder="검색할 주류명을 입력하세요"
+        @keyup.enter="searchLiquor"
+      />
+      <button class="btn-search" @click="searchLiquor">검색</button>
+    </div>
+    <div v-if="!searchQuery" class="search-suggestions">
+      <button
+        v-for="drink in suggestedDrinks"
+        :key="drink"
+        class="suggestion-btn"
+        @click="quickSearch(drink)"
+      >
+        {{ drink }}
+      </button>
+    </div>
+  </div> -->
 
-            <!-- 주류 검색 섹션
-            <div class="liquor-search-section">
-                <h3>🛍️ 재료 검색 (DailyShot)</h3>
-                <div class="search-container">
-                    <input 
-                    v-model="searchQuery"
-                        type="text"
-                        class="search-input"
-                        placeholder="검색할 주류명을 입력하세요"
-                        @keyup.enter="searchLiquor"
-                    >
-                    <button class="btn-search" @click="searchLiquor">검색</button>
-                </div>
-                <div v-if="!searchQuery" class="search-suggestions">
-                    <button 
-                    v-for="drink in suggestedDrinks" 
-                    :key="drink"
-                    class="suggestion-btn"
-                    @click="quickSearch(drink)"
-                    >
-                        {{ drink }}
-                    </button>
-                </div>
-            </div>
-            -->
-            
-            <!-- 친구 초대 섹션 -->
-            <div class="invite-section">
-                <h3>👥 친구와 함께 학습하세요!</h3>
-                <div class="invite-buttons">
-                    <button class="btn-invite" @click="shareLinkCopy">
-                        <span class="invite-icon">🔗</span>
-                        <span>링크 복사</span>
-                    </button>
-                    <!--
-                    <button class="btn-invite kakao" @click="shareKakao">
-                        <span class="invite-icon">💬</span>
-                        <span>카카오톡</span>
-                    </button>
-                    <button class="btn-invite email" @click="shareEmail">
-                        <span class="invite-icon">📧</span>
-                        <span>메일 공유</span>
-                    </button>
-                    -->
-                </div>
-                <div class="success-message" v-if="shareMessage">{{ shareMessage }}</div>
-            </div>
-        </div>
-    `,
+  <!-- 친구 초대 섹션 -->
+  <div class="invite-section">
+    <h3>👥 친구와 함께 학습하세요!</h3>
+    <div class="invite-buttons">
+      <button class="btn-invite" @click="shareLinkCopy">
+        <span class="invite-icon">🔗</span>
+        <span>링크 복사</span>
+      </button>
+      <!-- <button class="btn-invite kakao" @click="shareKakao">
+        <span class="invite-icon">💬</span>
+        <span>카카오톡</span>
+      </button>
+      <button class="btn-invite email" @click="shareEmail">
+        <span class="invite-icon">📧</span>
+        <span>메일 공유</span>
+      </button> -->
+    </div>
+    <div class="success-message" v-if="shareMessage">{{ shareMessage }}</div>
+  </div>
+</div>        
+`,
 
   data() {
     return {
@@ -757,161 +781,161 @@ app.component("FlashcardStudy", {
   props: ["cocktails", "studyMode", "cocktailInfo"],
   emits: ["back-home"],
   template: `
-    <div class="flashcard-study">
-    <!-- 헤더 -->
-    <div class="study-header">
-        <button class="btn btn-secondary btn-small" @click="$emit('back-home')">
-        ← 돌아가기
-        </button>
-        <h2>{{ getModeTitle() }}</h2>
-        <div class="study-counter">
-        {{ currentIndex + 1 }} / {{ currentGroupCocktails.length }}
-        </div>
+<div class="flashcard-study">
+  <!-- 헤더 -->
+  <div class="study-header">
+    <button class="btn btn-secondary btn-small" @click="$emit('back-home')">
+      ← 돌아가기
+    </button>
+    <h2>{{ getModeTitle() }}</h2>
+    <div class="study-counter">
+      {{ currentIndex + 1 }} / {{ currentGroupCocktails.length }}
     </div>
+  </div>
 
-    <!-- 그룹 선택 -->
-    <div class="group-selector">
-        <button
-        v-for="(group, key) in groupedCocktails"
-        :key="key"
-        class="group-btn"
-        :class="{ active: currentGroup === key }"
-        @click="selectGroup(key)"
-        >
-        {{ key }} ({{ group.length }})
-        </button>
-    </div>
+  <!-- 그룹 선택 -->
+  <div class="group-selector">
+    <button
+      v-for="(group, key) in groupedCocktails"
+      :key="key"
+      class="group-btn"
+      :class="{ active: currentGroup === key }"
+      @click="selectGroup(key)"
+    >
+      {{ key }} ({{ group.length }})
+    </button>
+  </div>
 
-    <!-- 카드 -->
-    <div class="flashcard-container">
-        <div class="flashcard" :class="{ flipped: isFlipped }" @click="flipCard">
-        <!-- 앞면 -->
-        <div class="flashcard-front">
-            <div class="card-title">{{ currentCocktail.name_ko }}</div>
-            <div class="card-subtitle">{{ currentCocktail.name }}</div>
-            <div class="card-hint">카드를 클릭하여 뒤집기</div>
+  <!-- 카드 -->
+  <div class="flashcard-container">
+    <div class="flashcard" :class="{ flipped: isFlipped }" @click="flipCard">
+      <!-- 앞면 -->
+      <div class="flashcard-front">
+        <div class="card-title">{{ currentCocktail.name_ko }}</div>
+        <div class="card-subtitle">{{ currentCocktail.name }}</div>
+        <div class="card-hint">카드를 클릭하여 뒤집기</div>
+      </div>
+
+      <!-- 뒷면 -->
+      <div class="flashcard-back">
+        <div class="card-details">
+          <div class="detail-row">
+            <span class="label">기주:</span>
+            <span class="value"
+              >{{ currentCocktail.base_ko }} ({{ currentCocktail.base }})</span
+            >
+          </div>
+          <div class="detail-row">
+            <span class="label">글라스:</span>
+            <span class="value">{{ currentCocktail.glass_ko }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="label">조주법:</span>
+            <span class="value">{{ currentCocktail.method_ko }}</span>
+          </div>
         </div>
 
-        <!-- 뒷면 -->
-        <div class="flashcard-back">
-            <div class="card-details">
-            <div class="detail-row">
-                <span class="label">기주:</span>
-                <span class="value"
-                >{{ currentCocktail.base_ko }} ({{ currentCocktail.base }})</span
-                >
-            </div>
-            <div class="detail-row">
-                <span class="label">글라스:</span>
-                <span class="value">{{ currentCocktail.glass_ko }}</span>
-            </div>
-            <div class="detail-row">
-                <span class="label">조주법:</span>
-                <span class="value">{{ currentCocktail.method_ko }}</span>
-            </div>
-            </div>
-            
-            <div class="ingredients-section">
-            <h4>재료</h4>
-            <ul>
-              <li v-for="ing in currentCocktail.ingredients" :key="ing.name">
+        <div class="ingredients-section">
+          <h4>재료</h4>
+          <ul>
+            <li v-for="ing in currentCocktail.ingredients" :key="ing.name">
               {{ ing.name_ko }} {{ ing.amount }}{{ ing.unit }}
-              </li>
-              <li>
-                  <span class="label">가니쉬: </span>
-                  <span class="value">{{ currentCocktail.garnish_ko }}</span>
-              </li>
-            </ul>
-            </div>
-            
-            <div class="tips-section">
-            <p>{{ currentCocktail.tips }}</p>
-            </div>
+            </li>
+            <li>
+              <span class="label">가니쉬: </span>
+              <span class="value">{{ currentCocktail.garnish_ko }}</span>
+            </li>
+          </ul>
         </div>
-        </div>
-    </div>
-    <!-- 네비게이션 -->
-    <div class="card-navigation">
-        <button
-        class="btn btn-secondary"
-        @click="previousCard"
-        :disabled="currentIndex === 0"
-        >
-        ← 이전
-        </button>
-        <button
-        class="btn btn-primary"
-        @click="nextCard"
-        :disabled="currentIndex === currentGroupCocktails.length - 1"
-        >
-        다음 →
-        </button>
-    </div>
 
-    <!-- 쿠팡 파트너스 배너 -->
-    <div class="coupang-section" v-if="currentCoupang">
-        <div class="coupang-banner">
-        <iframe
-            :src="getCoupangWidgetUrl()"
-            width="100%"
-            height="300"
-            frameborder="0"
-            scrolling="no"
-        ></iframe>
-        <p style="font-size: 0.8rem; color: #999; margin-top: 10px">
-            이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를
-            제공받습니다.
-        </p>
+        <div class="tips-section">
+          <p>{{ currentCocktail.tips }}</p>
         </div>
+      </div>
     </div>
+  </div>
+  <!-- 네비게이션 -->
+  <div class="card-navigation">
+    <button
+      class="btn btn-secondary"
+      @click="previousCard"
+      :disabled="currentIndex === 0"
+    >
+      ← 이전
+    </button>
+    <button
+      class="btn btn-primary"
+      @click="nextCard"
+      :disabled="currentIndex === currentGroupCocktails.length - 1"
+    >
+      다음 →
+    </button>
+  </div>
 
-    <!-- DailyShot 검색 -->
-    <div class="dailyshot-section" v-if="currentSearch">
-        <h3>🔍 재료 구매처 찾기</h3>
-        <div class="search-tabs">
-        <button
-            v-for="(item, idx) in currentSearch.search"
-            :key="idx"
-            class="tab-btn"
-            :class="{ active: selectedSearchTab === idx }"
-            @click="selectedSearchTab = idx"
-        >
-            {{ item.name }}
-        </button>
-        </div>
-        <div class="dailyshot-iframe">
-        <iframe
-            :src="getDailyShotUrl()"
-            width="100%"
-            height="600"
-            frameborder="0"
-        ></iframe>
-        </div>
+  <!-- 쿠팡 파트너스 배너 -->
+  <div class="coupang-section" v-if="currentCoupang">
+    <div class="coupang-banner">
+      <iframe
+        :src="getCoupangWidgetUrl()"
+        width="100%"
+        height="300"
+        frameborder="0"
+        scrolling="no"
+      ></iframe>
+      <p style="font-size: 0.8rem; color: #999; margin-top: 10px">
+        이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를
+        제공받습니다.
+      </p>
     </div>
+  </div>
 
-    <!-- 유튜브 영상 -->
-    <div class="video-section" v-if="currentVideo">
-        <h3>📹 참고 영상</h3>
-        <div class="video-grid">
-        <ul
-            v-for="(video, idx) in currentVideo.video"
-            :key="idx"
-            class="video-item"
+  <!-- DailyShot 검색 -->
+  <div class="dailyshot-section" v-if="currentSearch">
+    <h3>🔍 재료 구매처 찾기</h3>
+    <div class="search-tabs">
+      <button
+        v-for="(item, idx) in currentSearch.search"
+        :key="idx"
+        class="tab-btn"
+        :class="{ active: selectedSearchTab === idx }"
+        @click="selectedSearchTab = idx"
+      >
+        {{ item.name }}
+      </button>
+    </div>
+    <div class="dailyshot-iframe">
+      <iframe
+        :src="getDailyShotUrl()"
+        width="100%"
+        height="600"
+        frameborder="0"
+      ></iframe>
+    </div>
+  </div>
+
+  <!-- 유튜브 영상 -->
+  <div class="video-section" v-if="currentVideo">
+    <h3>📹 참고 영상</h3>
+    <div class="video-grid">
+      <ul
+        v-for="(video, idx) in currentVideo.video"
+        :key="idx"
+        class="video-item"
+      >
+        {{ video.name }} (
+        <a v-if="video.url" :href="video.url" target="_blank" class=""
+          >Shorts 보기</a
         >
-            {{ video.name }} (
-            <a v-if="video.url" :href="video.url" target="_blank" class=""
-            >Shorts 보기</a
-            >
-            <span v-if="video.url&&video['url-l']"> | </span>
-            <a v-if="video['url-l']" :href="video['url-l']" target="_blank" class=""
-            >전체 영상</a
-            >
-            )
-        </ul>
-        </div>
+        <span v-if="video.url&&video['url-l']"> | </span>
+        <a v-if="video['url-l']" :href="video['url-l']" target="_blank" class=""
+          >전체 영상</a
+        >
+        )
+      </ul>
     </div>
-    </div>
-    `,
+  </div>
+</div>
+`,
 
   data() {
     return {
@@ -1043,69 +1067,106 @@ app.component("QuizScreen", {
     "answered",
     "selectedAnswer",
     "feedback",
+    "cocktailInfo",
   ],
   emits: ["answer", "next", "skip", "exit"],
   template: `
-        <div v-if="currentQuestion" class="screen">
-            <div class="quiz-header">
-                <span class="question-counter">문제 {{ questionIndex + 1 }} / {{ totalQuestions }}</span>
-                <div class="progress-bar">
-                    <div class="progress-fill" :style="{ width: ((questionIndex + 1) / totalQuestions * 100) + '%' }"></div>
-                </div>
-            </div>
+<div v-if="currentQuestion" class="screen">
+  <div class="quiz-header">
+    <span class="question-counter"
+      >문제 {{ questionIndex + 1 }} / {{ totalQuestions }}</span
+    >
+    <div class="progress-bar">
+      <div
+        class="progress-fill"
+        :style="{ width: ((questionIndex + 1) / totalQuestions * 100) + '%' }"
+      ></div>
+    </div>
+  </div>
 
-            <div class="question-card">
-                <span class="question-type">{{ getQuestionTypeLabel(currentQuestion.type) }}</span>
-                <div class="question-text">{{ currentQuestion.question }}</div>
+  <div class="question-card">
+    <span class="question-type"
+      >{{ getQuestionTypeLabel(currentQuestion.type) }}</span
+    >
+    <div class="question-text">{{ currentQuestion.question }}</div>
 
-                <div class="options">
-                    <button
-                        v-for="(option, index) in currentQuestion.options"
-                        :key="index"
-                        class="option-btn"
-                        :class="{
+    <div class="options">
+      <button
+        v-for="(option, index) in currentQuestion.options"
+        :key="index"
+        class="option-btn"
+        :class="{
                             'selected': selectedAnswer === index && !answered,
                             'correct': answered && option.isCorrect,
                             'incorrect': answered && selectedAnswer === index && !option.isCorrect
                         }"
-                        @click="!answered && $emit('answer', index)"
-                        :disabled="answered"
-                    >
-                        {{ option.text }}
-                    </button>
-                </div>
+        @click="!answered && $emit('answer', index)"
+        :disabled="answered"
+      >
+        {{ option.text }}
+      </button>
+    </div>
 
-                <div v-if="feedback" :class="['feedback', feedback.includes('정답') ? 'correct' : 'incorrect']">
-                    {{ feedback }}
-                </div>
+    <div
+      v-if="feedback"
+      :class="['feedback', feedback.includes('정답') ? 'correct' : 'incorrect']"
+    >
+      {{ feedback }}
+    </div>
 
-                <div class="action-buttons">
-                    <button 
-                        v-if="!answered"
-                        class="btn btn-secondary btn-small"
-                        @click="$emit('skip')"
-                    >
-                        건너뛰기
-                    </button>
-                    <button 
-                        v-if="answered"
-                        class="btn btn-primary btn-small"
-                        @click="$emit('next')"
-                    >
-                        {{ questionIndex + 1 === totalQuestions ? '결과 보기' : '다음 문제' }}
-                    </button>
-                    <button 
-                        class="btn btn-secondary btn-small"
-                        @click="$emit('exit')"
-                    >
-                        나가기
-                    </button>
-                </div>
-            </div>
-        </div>
-    `,
+    <div class="action-buttons">
+      <button
+        v-if="!answered"
+        class="btn btn-secondary btn-small"
+        @click="$emit('skip')"
+      >
+        건너뛰기
+      </button>
+      <button
+        v-if="answered"
+        class="btn btn-primary btn-small"
+        @click="$emit('next')"
+      >
+        {{ questionIndex + 1 === totalQuestions ? '결과 보기' : '다음 문제' }}
+      </button>
+      <button class="btn btn-secondary btn-small" @click="$emit('exit')">
+        나가기
+      </button>
+    </div>
+  </div>
+  <div style="text-align: center" v-if="feedback">
+    <iframe
+      :src="getVideoUrl()"
+      frameborder="0"
+      allow="encrypted-media"
+      allowfullscreen
+    >
+    </iframe>
+  </div>
+</div>
+`,
+  computed: {
+    currentVideo() {
+      if (!this.cocktailInfo) return null;
+      console.log(this.cocktailInfo);
 
+      return this.cocktailInfo.find(
+        (v) => v.name === this.currentCocktail.name
+      );
+    },
+  },
   methods: {
+    getVideoUrl() {
+      console.log(this.currentQuestion.cocktail, this.cocktailInfo);
+      return (
+        "https://www.youtube.com/embed/" +
+        this.cocktailInfo
+          .find((v) => v.name === this.currentQuestion.cocktail.name)
+          ?.video.find((e) => e.name === "이기적 영진닷컴")
+          ["url-l"].split("=")[1] +
+        "?autoplay=1&controls=0&rel=0&showinfo=0"
+      );
+    },
     getQuestionTypeLabel(type) {
       const labels = {
         ingredients: "재료 맞추기",
@@ -1126,59 +1187,63 @@ app.component("ResultScreen", {
   props: ["score", "total", "results", "stats"],
   emits: ["back-home"],
   template: `
-        <div class="screen">
-            <div class="result-header">
-                <h2>학습 완료!</h2>
-            </div>
+<div class="screen">
+  <div class="result-header">
+    <h2>학습 완료!</h2>
+  </div>
 
-            <div class="score-box">
-                <div class="score-number">{{ score }} / {{ total }}</div>
-                <div class="score-text">총 {{ total }}개 문제</div>
-                <div class="score-detail">정답률: {{ Math.round((score / total) * 100) }}%</div>
-            </div>
+  <div class="score-box">
+    <div class="score-number">{{ score }} / {{ total }}</div>
+    <div class="score-text">총 {{ total }}개 문제</div>
+    <div class="score-detail">
+      정답률: {{ Math.round((score / total) * 100) }}%
+    </div>
+  </div>
 
-            <div class="stats mt-20">
-                <h3>📊 전체 통계</h3>
-                <div class="stat-info">
-                    <div class="stat-item">
-                        <span class="stat-label">누적 풀이</span>
-                        <span class="stat-value">{{ stats.totalAttempts }}</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-label">누적 정답</span>
-                        <span class="stat-value">{{ stats.correctAnswers }}</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-label">전체 정답률</span>
-                        <span class="stat-value">{{ stats.accuracy }}%</span>
-                    </div>
-                </div>
-            </div>
+  <div class="stats mt-20">
+    <h3>📊 전체 통계</h3>
+    <div class="stat-info">
+      <div class="stat-item">
+        <span class="stat-label">누적 풀이</span>
+        <span class="stat-value">{{ stats.totalAttempts }}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">누적 정답</span>
+        <span class="stat-value">{{ stats.correctAnswers }}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">전체 정답률</span>
+        <span class="stat-value">{{ stats.accuracy }}%</span>
+      </div>
+    </div>
+  </div>
 
-            <div class="result-list">
-                <h3>📋 상세 결과</h3>
-                <div 
-                    v-for="(result, index) in results"
-                    :key="index"
-                    :class="['result-item', result.isCorrect ? 'correct' : 'incorrect']"
-                >
-                    <div class="result-number">{{ result.number }}</div>
-                    <div class="result-content">
-                        <div class="result-question">{{ result.question }}</div>
-                        <div class="result-answer">당신의 답: {{ result.yourAnswer }}</div>
-                        <div v-if="!result.isCorrect" class="result-correct-answer">정답: {{ result.correct }}</div>
-                    </div>
-                    <div class="result-icon">{{ result.isCorrect ? '✓' : '✗' }}</div>
-                </div>
-            </div>
-
-            <div class="action-buttons mt-20">
-                <button class="btn btn-primary btn-wide" @click="$emit('back-home')">
-                    홈으로 돌아가기
-                </button>
-            </div>
+  <div class="result-list">
+    <h3>📋 상세 결과</h3>
+    <div
+      v-for="(result, index) in results"
+      :key="index"
+      :class="['result-item', result.isCorrect ? 'correct' : 'incorrect']"
+    >
+      <div class="result-number">{{ result.number }}</div>
+      <div class="result-content">
+        <div class="result-question">{{ result.question }}</div>
+        <div class="result-answer">당신의 답: {{ result.yourAnswer }}</div>
+        <div v-if="!result.isCorrect" class="result-correct-answer">
+          정답: {{ result.correct }}
         </div>
-    `,
+      </div>
+      <div class="result-icon">{{ result.isCorrect ? '✓' : '✗' }}</div>
+    </div>
+  </div>
+
+  <div class="action-buttons mt-20">
+    <button class="btn btn-primary btn-wide" @click="$emit('back-home')">
+      홈으로 돌아가기
+    </button>
+  </div>
+</div>
+`,
 });
 
 // 앱 마운트
