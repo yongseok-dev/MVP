@@ -1,0 +1,805 @@
+{
+  "name": "칵테일 추가 정보",
+  "reference": "20251116_update",
+  "data": [
+    {
+      "name": "Pousse Cafe",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "https://www.youtube.com/shorts/z6H2x_VfLQg",
+          "url-l": "https://www.youtube.com/watch?v=7PPTJFtXrFw"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=lq78i_HhELc",
+          "url-l": "https://www.youtube.com/watch?v=3SOjdOEUC0E"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=qNe_jwsIhHM"
+        }
+      ]
+    },
+    {
+      "name": "Manhattan",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "https://www.youtube.com/shorts/9PnS9NKFKC4",
+          "url-l": "https://www.youtube.com/watch?v=7hfjGsCNMrI"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=C9UWveQs3tU",
+          "url-l": "https://www.youtube.com/watch?v=6yW82hvi3hc"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=TP8l2Qv6zRY"
+        }
+      ]
+    },
+    {
+      "name": "Dry Martini",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "https://www.youtube.com/shorts/WHII61f3xmw",
+          "url-l": "https://www.youtube.com/watch?v=VoV17VRSwqI"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=lsvoojEudJc",
+          "url-l": "https://www.youtube.com/watch?v=1OeO3CbUAzg"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=mb8a8lnTz-s"
+        }
+      ]
+    },
+    {
+      "name": "Old Fashioned",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "https://www.youtube.com/shorts/yHpeznZPmbE",
+          "url-l": "https://www.youtube.com/watch?v=-hqFsBtYyRA"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=A5jmRDptHhE",
+          "url-l": "https://www.youtube.com/watch?v=8j-VHODPQgE"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=jsL9iQBxyWI"
+        }
+      ]
+    },
+    {
+      "name": "Brandy Alexander",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "https://www.youtube.com/shorts/DfaF49PBblg",
+          "url-l": "https://www.youtube.com/watch?v=lq-9X6Uaw_I"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=PkOJjPF9WVI",
+          "url-l": "https://www.youtube.com/watch?v=XkU67Ci45bU"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=L6As6QQAkvo"
+        }
+      ]
+    },
+    {
+      "name": "Singapore Sling",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "https://www.youtube.com/shorts/2e0vXMGWj4Y",
+          "url-l": "https://www.youtube.com/watch?v=c0CRpjWEbsQ"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=1U_-3pzqQ14",
+          "url-l": "https://www.youtube.com/watch?v=W7b7gXF-E58"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=YfD1WDVjUrw"
+        }
+      ]
+    },
+    {
+      "name": "Black Russian",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "https://www.youtube.com/shorts/rjtrvns49v8",
+          "url-l": "https://www.youtube.com/watch?v=ueWai6cUsSI"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=5HXwBzZCWhc",
+          "url-l": "https://www.youtube.com/watch?v=Zv5cBRSmLSs"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=9Vry9AibPi4"
+        }
+      ]
+    },
+    {
+      "name": "Margarita",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "https://www.youtube.com/shorts/DY7CkT8eDyM",
+          "url-l": "https://www.youtube.com/watch?v=8z4ioHXybUs"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=lMvmWkLyZ14",
+          "url-l": "https://www.youtube.com/watch?v=Psml10N2EkM"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=Lxot4EBCu9w"
+        }
+      ]
+    },
+    {
+      "name": "Rusty Nail",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "https://www.youtube.com/watch?v=h5SU58ed1kk",
+          "url-l": "https://www.youtube.com/watch?v=h5SU58ed1kk"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/shorts/GRm5ySfL6Jc",
+          "url-l": "https://www.youtube.com/watch?v=lCVTwnG1amU"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=cCYzI5vo2Sw"
+        }
+      ]
+    },
+    {
+      "name": "Whiskey Sour",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "https://www.youtube.com/shorts/LfpnKBPFkjQ",
+          "url-l": "https://www.youtube.com/watch?v=M7uFKrH-mZM"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=nel6tqJMUiU",
+          "url-l": "https://www.youtube.com/watch?v=kZpYdau6sic"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=bjOoPfxtVF8"
+        }
+      ]
+    },
+    {
+      "name": "New York",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "https://www.youtube.com/shorts/Er2IdrqTCtg",
+          "url-l": "https://www.youtube.com/watch?v=XMFU1qvV2E0"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=dLZYf0dZjWs",
+          "url-l": "https://www.youtube.com/watch?v=qaAnkBwO81M"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=bSHi1dyVXgo"
+        }
+      ]
+    },
+    {
+      "name": "Daiquiri",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=uxJe-3sATKw"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=PjuyAQCrDeA",
+          "url-l": "https://www.youtube.com/watch?v=cMrE3Pmtnrs"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=qF8g3wyXq1Q"
+        }
+      ]
+    },
+    {
+      "name": "B-52",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "https://www.youtube.com/shorts/OP6HEmq2HDo",
+          "url-l": "https://www.youtube.com/watch?v=LA7ZVpn80Sg"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=_BexANKBi3c",
+          "url-l": "https://www.youtube.com/watch?v=KqMfO-rWDus"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=H7OLOogkDF8"
+        }
+      ]
+    },
+    {
+      "name": "June Bug",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "https://www.youtube.com/shorts/rat8P5LZyQA",
+          "url-l": "https://www.youtube.com/watch?v=n4RBOFW1UiU"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=a1S9GwCxJ2k"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=sdACWk44QtM"
+        }
+      ]
+    },
+    {
+      "name": "Bacardi Cocktail",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=0MGgHGBjxMs"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=xcJ_-P3KLUY",
+          "url-l": "https://www.youtube.com/watch?v=B2rGXKoLFBI"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=WcKr45Rx6OI"
+        }
+      ]
+    },
+    {
+      "name": "Cuba Libre",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "https://www.youtube.com/shorts/dr10_0DpLzI",
+          "url-l": "https://www.youtube.com/watch?v=VFWd5JVhvVw"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=U3TOW8f8kmU",
+          "url-l": "https://www.youtube.com/watch?v=uBTRN4-gkYE"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=uQ5KeQ3bzVs"
+        }
+      ]
+    },
+    {
+      "name": "Grasshopper",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=sR_yOnx1bHY"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=6YRXgWO5i7s",
+          "url-l": "https://www.youtube.com/watch?v=mX4x-ZBFb44"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=GasPUbu0oLo"
+        }
+      ]
+    },
+    {
+      "name": "Seabreeze",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "https://www.youtube.com/shorts/pVJSV-Pu_0Q",
+          "url-l": "https://www.youtube.com/watch?v=qN1x9fEkAQo"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=v0_FdIHG8_g",
+          "url-l": "https://www.youtube.com/watch?v=pIX6WQBSH1Y"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=y3EIiyUtmPE"
+        }
+      ]
+    },
+    {
+      "name": "Apple Martini",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "https://www.youtube.com/shorts/RmpkA5IuMEU",
+          "url-l": "https://www.youtube.com/watch?v=fOv-eLNWtFs"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=2FEJLvLspds",
+          "url-l": "https://www.youtube.com/watch?v=fy7u7jA8EUM"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=mohzwZdeWrs"
+        }
+      ]
+    },
+    {
+      "name": "Negroni",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "https://www.youtube.com/shorts/6X3kM2iH-JM",
+          "url-l": "https://www.youtube.com/watch?v=dwJlOxoLyvo"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=n_sLx4XgaWw",
+          "url-l": "https://www.youtube.com/watch?v=sJPrefbwpLE"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=0sDMHetjfAg"
+        }
+      ]
+    },
+    {
+      "name": "Long Island Iced Tea",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=nisY_Z7VEeU"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=_FYrj0-P6YA",
+          "url-l": "https://www.youtube.com/watch?v=8Thuma06aMo"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=I03Z5wPVXnA"
+        }
+      ]
+    },
+    {
+      "name": "Sidecar",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=tlLhwID_uhM"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=m9Gsxy16K2Y",
+          "url-l": "https://www.youtube.com/watch?v=lQ7Ddqjm3kM"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=wC2XiRZasLE"
+        }
+      ]
+    },
+    {
+      "name": "Mai-Tai",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=Db_-HfDxt8w"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=6gsdv5wMB0Q",
+          "url-l": "https://www.youtube.com/watch?v=m-wY2ahUcZw"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=uBzWAuG5dXw"
+        }
+      ]
+    },
+    {
+      "name": "Pina Colada",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=PurAAJigeqA"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=nb7iIVNG8sQ",
+          "url-l": "https://www.youtube.com/watch?v=uc9Fji1htJA"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=zYX7LDn00W4"
+        }
+      ]
+    },
+    {
+      "name": "Cosmopolitan Cocktail",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=ZO4oJUMLej4"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=YBH4cceoseY",
+          "url-l": "https://www.youtube.com/watch?v=_wmLVl9CNYE"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=lIGPKLF_b-A"
+        }
+      ]
+    },
+    {
+      "name": "Moscow Mule",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=11B5kutUTMw"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=dQjxxoI0CWU",
+          "url-l": "https://www.youtube.com/watch?v=y9-_YO8XjB0"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=tJiwbGZ-34U"
+        }
+      ]
+    },
+    {
+      "name": "Apricot Cocktail",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=L0gxBVm5J4k"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=Hmr8V7tsUUg",
+          "url-l": "https://www.youtube.com/watch?v=Wkv5FP4a8hs"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=DnjmEm4SHyo"
+        }
+      ]
+    },
+    {
+      "name": "Honeymoon Cocktail",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=vkkP2hcjGMw"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=k_M4D8zKggU",
+          "url-l": "https://www.youtube.com/watch?v=iS8tMNaWifM"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=aHlW5rDwRP4"
+        }
+      ]
+    },
+    {
+      "name": "Blue Hawaiian",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=pJ2GlI7qFWs"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=YTkdoVvEuBQ",
+          "url-l": "https://www.youtube.com/watch?v=SZpEmXIxT0k"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=HM5Zm5eerTw"
+        }
+      ]
+    },
+    {
+      "name": "Kir",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=0awa4fqama0"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=0L_bb4ZL8J0",
+          "url-l": "https://www.youtube.com/watch?v=RXdHgvpJwjA"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=dsHwlSUtOXc"
+        }
+      ]
+    },
+    {
+      "name": "Tequila Sunrise",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "https://www.youtube.com/shorts/GJ5WeV-GdY8",
+          "url-l": "https://www.youtube.com/watch?v=3m3wAA0bCII"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=6LgFPodVg0E",
+          "url-l": "https://www.youtube.com/watch?v=sgVeyRWTTBk"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=LOZnL1VRpzs"
+        }
+      ]
+    },
+    {
+      "name": "Healing",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=huhfe8G6K5M"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=l6dlQLJkHmI",
+          "url-l": "https://www.youtube.com/watch?v=OIA01hHGLdk"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=dA2UpuO-aP8"
+        }
+      ]
+    },
+    {
+      "name": "Jindo",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=5YwCnppYfFE"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=Gdy5z7VqP7o",
+          "url-l": "https://www.youtube.com/watch?v=-xBFly32pb8"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=FDjw4KuEHmA"
+        }
+      ]
+    },
+    {
+      "name": "Puppy Love",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=CXO7brguuyI"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=hIlHHZg2-mw",
+          "url-l": "https://www.youtube.com/watch?v=GNnl7warQxU"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=7w7fMKLzJPU"
+        }
+      ]
+    },
+    {
+      "name": "Geumsan",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=vIyAnyOgoTQ"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=lTBGBwwEzhA",
+          "url-l": "https://www.youtube.com/watch?v=K27Zb_eUGEQ"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=ZO_JozuwYsY"
+        }
+      ]
+    },
+    {
+      "name": "Gochang",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "https://www.youtube.com/shorts/OoCeBa2_O_8",
+          "url-l": "https://www.youtube.com/watch?v=pUUkItPI5jc"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=FD_XvUzk6qw",
+          "url-l": "https://www.youtube.com/watch?v=ApG0qX8lQCA"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=r6cg5C6E7Xg"
+        }
+      ]
+    },
+    {
+      "name": "Gin Fizz",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=t4LKjgkyGKo"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=jqkK23ScSug",
+          "url-l": "https://www.youtube.com/watch?v=J9sBNxtrC20"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=kIBn_F39GLo"
+        }
+      ]
+    },
+    {
+      "name": "Fresh Lemon Squash",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=e1UPC92xQ-g"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=nTzsnMikVI4",
+          "url-l": "https://www.youtube.com/watch?v=0q7h6grnyxQ"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=1fTgAADisxs"
+        }
+      ]
+    },
+    {
+      "name": "Virgin Fruit Punch",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=P_9YTDIkFb4"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=HCCdYowhasM",
+          "url-l": "https://www.youtube.com/watch?v=UuQqKq-BEG8"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=1nnSNZRqaZs"
+        }
+      ]
+    },
+    {
+      "name": "Boulevardier",
+      "video": [
+        {
+          "name": "한잔공감",
+          "url": "https://www.youtube.com/shorts/auyZjzbe3R4",
+          "url-l": "https://www.youtube.com/watch?v=V1qD9pI3VaE"
+        },
+        {
+          "name": "kabartender",
+          "url": "https://www.youtube.com/watch?v=KFDLNUiOTnU",
+          "url-l": "https://www.youtube.com/watch?v=QTWSr9HLcwg"
+        },
+        {
+          "name": "이기적 영진닷컴",
+          "url": "",
+          "url-l": "https://www.youtube.com/watch?v=A230Mq0Rm9E"
+        }
+      ]
+    }
+  ]
+}

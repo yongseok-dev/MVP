@@ -1,0 +1,1498 @@
+{
+  "name": "[공개문제] 2024년 조주기능사 실기시험문제",
+  "reference": "https://www.q-net.or.kr/cst006.do?id=cst00602&gSite=Q&gId=",
+  "data": [
+    {
+      "id": 1,
+      "name": "Pousse Cafe",
+      "name_ko": "푸스 카페",
+      "base": "Brandy",
+      "base_ko": "브랜디",
+      "glass": "Stemed Liqueur Glass",
+      "glass_ko": "스템드 리큐어 글라스",
+      "method": "Float",
+      "method_ko": "플로팅",
+      "ingredients": [
+        {
+          "name": "Grenadine Syrup",
+          "name_ko": "그레나딘 시럽",
+          "amount": "1/3",
+          "unit": "part"
+        },
+        {
+          "name": "Creme De Menthe (Green)",
+          "name_ko": "크렘 드 민트(그린)",
+          "amount": "1/3",
+          "unit": "part"
+        },
+        {
+          "name": "Brandy",
+          "name_ko": "브랜디",
+          "amount": "1/3",
+          "unit": "part"
+        }
+      ],
+      "garnish": "None",
+      "garnish_ko": "없음",
+      "tips": "비중이 다른 리큐르로 층을 만드는 클래식 칵테일 / Classic layered cocktail with different densities"
+    },
+    {
+      "id": 2,
+      "name": "Manhattan",
+      "name_ko": "맨하탄",
+      "base": "Whiskey",
+      "base_ko": "위스키",
+      "glass": "Cocktail Glass",
+      "glass_ko": "칵테일 글라스",
+      "method": "Stir",
+      "method_ko": "스터링",
+      "ingredients": [
+        {
+          "name": "Bourbon Whiskey",
+          "name_ko": "버번 위스키",
+          "amount": "1.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Sweet Vermouth",
+          "name_ko": "스윗 베르무트",
+          "amount": "0.75",
+          "unit": "oz"
+        },
+        {
+          "name": "Angostura Bitters",
+          "name_ko": "앙고스투라 비터",
+          "amount": "1",
+          "unit": "dash"
+        }
+      ],
+      "garnish": "Cherry",
+      "garnish_ko": "마라스킹 체리",
+      "tips": "위스키 기반의 클래식 칵테일 / Classic whiskey-based cocktail"
+    },
+    {
+      "id": 3,
+      "name": "Dry Martini",
+      "name_ko": "드라이 마티니",
+      "base": "Gin",
+      "base_ko": "진",
+      "glass": "Cocktail Glass",
+      "glass_ko": "칵테일 글라스",
+      "method": "Stir",
+      "method_ko": "스터링",
+      "ingredients": [
+        {
+          "name": "Dry Gin",
+          "name_ko": "드라이 진",
+          "amount": "2",
+          "unit": "oz"
+        },
+        {
+          "name": "Dry Vermouth",
+          "name_ko": "드라이 베르무트",
+          "amount": "1/3",
+          "unit": "oz"
+        }
+      ],
+      "garnish": "Green Olive",
+      "garnish_ko": "그린 올리브",
+      "tips": "가장 고전적인 칵테일 / The most classic cocktail"
+    },
+    {
+      "id": 4,
+      "name": "Old Fashioned",
+      "name_ko": "올드 패션드",
+      "base": "Whiskey",
+      "base_ko": "위스키",
+      "glass": "Old-Fashioned Glass",
+      "glass_ko": "올드 패션드 글라스",
+      "method": "Build",
+      "method_ko": "빌딩",
+      "ingredients": [
+        {
+          "name": "Bourbon Whiskey",
+          "name_ko": "버번 위스키",
+          "amount": "1.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Powdered Sugar",
+          "name_ko": "설탕",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Angostura Bitters",
+          "name_ko": "앙고스투라 비터",
+          "amount": "1",
+          "unit": "dash"
+        },
+        {
+          "name": "Soda Water",
+          "name_ko": "소다수",
+          "amount": "0.5",
+          "unit": "oz"
+        }
+      ],
+      "garnish": "A Slice of Orange and Cherry",
+      "garnish_ko": "오렌지 슬라이스와 체리",
+      "tips": "가장 간단하고 우아한 위스키 칵테일 / Simplest and most elegant whiskey cocktail"
+    },
+    {
+      "id": 5,
+      "name": "Brandy Alexander",
+      "name_ko": "브랜디 알렉산더",
+      "base": "Brandy",
+      "base_ko": "브랜디",
+      "glass": "Cocktail Glass",
+      "glass_ko": "칵테일 글라스",
+      "method": "Shake",
+      "method_ko": "셰이킹",
+      "ingredients": [
+        {
+          "name": "Brandy",
+          "name_ko": "브랜디",
+          "amount": "0.75",
+          "unit": "oz"
+        },
+        {
+          "name": "Creme De Cacao (Brown)",
+          "name_ko": "크렘 드 카카오(브라운)",
+          "amount": "0.75",
+          "unit": "oz"
+        },
+        {
+          "name": "Light Milk",
+          "name_ko": "생크림",
+          "amount": "0.75",
+          "unit": "oz"
+        }
+      ],
+      "garnish": "Nutmeg Powder",
+      "garnish_ko": "넛맥 가루",
+      "tips": "부드럽고 달콤한 크림 칵테일 / Smooth and sweet cream cocktail"
+    },
+    {
+      "id": 6,
+      "name": "Singapore Sling",
+      "name_ko": "싱가포르 슬링",
+      "base": "Gin",
+      "base_ko": "진",
+      "glass": "Footed Pilsner Glass",
+      "glass_ko": "필스너 글라스",
+      "method": "Shake/Build",
+      "method_ko": "셰이킹/빌딩",
+      "ingredients": [
+        {
+          "name": "Dry Gin",
+          "name_ko": "드라이 진",
+          "amount": "1.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Lemon Juice",
+          "name_ko": "레몬주스",
+          "amount": "0.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Powdered Sugar",
+          "name_ko": "설탕",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Soda Water",
+          "name_ko": "소다수",
+          "amount": "fill",
+          "unit": ""
+        },
+        {
+          "name": "Cherry Flavored Brandy",
+          "name_ko": "체리 향 브랜디",
+          "amount": "0.5",
+          "unit": "oz"
+        }
+      ],
+      "garnish": "A Slice of Orange and Cherry",
+      "garnish_ko": "오렌지 슬라이스와 체리",
+      "tips": "싱가포르의 상징적인 칵테일 / Singapore's iconic cocktail"
+    },
+    {
+      "id": 7,
+      "name": "Black Russian",
+      "name_ko": "블랙 러시안",
+      "base": "Vodka",
+      "base_ko": "보드카",
+      "glass": "Old-Fashioned Glass",
+      "glass_ko": "올드 패션드 글라스",
+      "method": "Build",
+      "method_ko": "빌딩",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "name_ko": "보드카",
+          "amount": "1",
+          "unit": "oz"
+        },
+        {
+          "name": "Coffee Liqueur",
+          "name_ko": "커피 리큐르",
+          "amount": "0.5",
+          "unit": "oz"
+        }
+      ],
+      "garnish": "None",
+      "garnish_ko": "없음",
+      "tips": "보드카와 커피 리큐르의 완벽한 조합 / Perfect combination of vodka and coffee liqueur"
+    },
+    {
+      "id": 8,
+      "name": "Margarita",
+      "name_ko": "마가리타",
+      "base": "Tequila",
+      "base_ko": "데킬라",
+      "glass": "Cocktail Glass",
+      "glass_ko": "칵테일 글라스",
+      "method": "Shake",
+      "method_ko": "셰이킹",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "name_ko": "데킬라",
+          "amount": "1.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Cointreau or Triple Sec",
+          "name_ko": "쿠앙트로 또는 트리플 섹",
+          "amount": "0.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Lime Juice",
+          "name_ko": "라임주스",
+          "amount": "0.5",
+          "unit": "oz"
+        }
+      ],
+      "garnish": "Rimming with Salt",
+      "garnish_ko": "소금 리밍",
+      "tips": "데킬라 기반의 대표 칵테일, 글라스 테두리에 소금 필수 / Classic tequila cocktail, salt rim essential"
+    },
+    {
+      "id": 9,
+      "name": "Rusty Nail",
+      "name_ko": "러스티 네일",
+      "base": "Whisky",
+      "base_ko": "위스키",
+      "glass": "Old-Fashioned Glass",
+      "glass_ko": "올드 패션드 글라스",
+      "method": "Build",
+      "method_ko": "빌딩",
+      "ingredients": [
+        {
+          "name": "Scotch Whisky",
+          "name_ko": "스카치 위스키",
+          "amount": "1",
+          "unit": "oz"
+        },
+        {
+          "name": "Drambuie",
+          "name_ko": "드람부이",
+          "amount": "0.5",
+          "unit": "oz"
+        }
+      ],
+      "garnish": "None",
+      "garnish_ko": "없음",
+      "tips": "스카치 위스키와 드람부이의 완벽한 조화 / Perfect harmony of Scotch whisky and Drambuie"
+    },
+    {
+      "id": 10,
+      "name": "Whiskey Sour",
+      "name_ko": "위스키 사워",
+      "base": "Whiskey",
+      "base_ko": "위스키",
+      "glass": "Sour Glass",
+      "glass_ko": "사워 글라스",
+      "method": "Shake/Build",
+      "method_ko": "셰이킹/빌딩",
+      "ingredients": [
+        {
+          "name": "Bourbon Whiskey",
+          "name_ko": "버번 위스키",
+          "amount": "1.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Lemon Juice",
+          "name_ko": "레몬주스",
+          "amount": "0.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Powdered Sugar",
+          "name_ko": "설탕",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Soda Water",
+          "name_ko": "소다수",
+          "amount": "1",
+          "unit": "oz"
+        }
+      ],
+      "garnish": "A Slice of Lemon and Cherry",
+      "garnish_ko": "레몬 슬라이스와 체리",
+      "tips": "상큼한 사워 스타일 칵테일 / Fresh sour-style cocktail"
+    },
+    {
+      "id": 11,
+      "name": "New York",
+      "name_ko": "뉴욕",
+      "base": "Whiskey",
+      "base_ko": "위스키",
+      "glass": "Cocktail Glass",
+      "glass_ko": "칵테일 글라스",
+      "method": "Shake",
+      "method_ko": "셰이킹",
+      "ingredients": [
+        {
+          "name": "Bourbon Whiskey",
+          "name_ko": "버번 위스키",
+          "amount": "1.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Lime Juice",
+          "name_ko": "라임주스",
+          "amount": "0.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Powdered Sugar",
+          "name_ko": "설탕",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Grenadine Syrup",
+          "name_ko": "그레나딘 시럽",
+          "amount": "0.5",
+          "unit": "tsp"
+        }
+      ],
+      "garnish": "Twist of Lemon peel",
+      "garnish_ko": "레몬 필 트위스트",
+      "tips": "뉴욕 스타일의 달콤한 칵테일 / New York style sweet cocktail"
+    },
+    {
+      "id": 12,
+      "name": "Daiquiri",
+      "name_ko": "다이키리",
+      "base": "Rum",
+      "base_ko": "럼",
+      "glass": "Cocktail Glass",
+      "glass_ko": "칵테일 글라스",
+      "method": "Shake",
+      "method_ko": "셰이킹",
+      "ingredients": [
+        {
+          "name": "Light Rum",
+          "name_ko": "라이트 럼",
+          "amount": "1.75",
+          "unit": "oz"
+        },
+        {
+          "name": "Lime Juice",
+          "name_ko": "라임주스",
+          "amount": "0.75",
+          "unit": "oz"
+        },
+        {
+          "name": "Powdered Sugar",
+          "name_ko": "설탕",
+          "amount": "1",
+          "unit": "tsp"
+        }
+      ],
+      "garnish": "None",
+      "garnish_ko": "없음",
+      "tips": "럼의 대표 칵테일, 가장 간단하고 완벽함 / Classic rum cocktail, simplest and perfect"
+    },
+    {
+      "id": 13,
+      "name": "B-52",
+      "name_ko": "B-52",
+      "base": "Liqueur",
+      "base_ko": "리큐르",
+      "glass": "Sherry Glass",
+      "glass_ko": "셰리 글라스",
+      "method": "Float",
+      "method_ko": "플로팅",
+      "ingredients": [
+        {
+          "name": "Coffee Liqueur",
+          "name_ko": "커피 리큐르",
+          "amount": "1/3",
+          "unit": "part"
+        },
+        {
+          "name": "Bailey's Irish Cream Liqueur",
+          "name_ko": "베일리스 아이리시 크림",
+          "amount": "1/3",
+          "unit": "part"
+        },
+        {
+          "name": "Grand Marnier",
+          "name_ko": "그랑 마르니에",
+          "amount": "1/3",
+          "unit": "part"
+        }
+      ],
+      "garnish": "None",
+      "garnish_ko": "없음",
+      "tips": "층이 분리되는 아름다운 리큐르 칵테일 / Beautiful layered liqueur cocktail"
+    },
+    {
+      "id": 14,
+      "name": "June Bug",
+      "name_ko": "준벅",
+      "base": "Rum",
+      "base_ko": "럼",
+      "glass": "Collins Glass",
+      "glass_ko": "콜린스 글라스",
+      "method": "Shake",
+      "method_ko": "셰이킹",
+      "ingredients": [
+        {
+          "name": "Midori (Melon Liqueur)",
+          "name_ko": "미도리(멜론 리큐르)",
+          "amount": "1",
+          "unit": "oz"
+        },
+        {
+          "name": "Coconut Flavored Rum",
+          "name_ko": "코코넛 향 럼",
+          "amount": "0.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Banana Liqueur",
+          "name_ko": "바나나 리큐르",
+          "amount": "0.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Pineapple Juice",
+          "name_ko": "파인애플 주스",
+          "amount": "2",
+          "unit": "oz"
+        },
+        {
+          "name": "Sweet & Sour Mix",
+          "name_ko": "스윗 & 사워 믹스",
+          "amount": "2",
+          "unit": "oz"
+        }
+      ],
+      "garnish": "A Wedge of fresh Pineapple & Cherry",
+      "garnish_ko": "신선한 파인애플과 체리",
+      "tips": "한국식 응원 칵테일, 상큼한 과일 맛 / Korean-style cheering cocktail with fresh fruit flavors"
+    },
+    {
+      "id": 15,
+      "name": "Bacardi Cocktail",
+      "name_ko": "바카디 칵테일",
+      "base": "Rum",
+      "base_ko": "럼",
+      "glass": "Cocktail Glass",
+      "glass_ko": "칵테일 글라스",
+      "method": "Shake",
+      "method_ko": "셰이킹",
+      "ingredients": [
+        {
+          "name": "Bacardi Rum White",
+          "name_ko": "바카디 화이트 럼",
+          "amount": "1.75",
+          "unit": "oz"
+        },
+        {
+          "name": "Lime Juice",
+          "name_ko": "라임주스",
+          "amount": "0.75",
+          "unit": "oz"
+        },
+        {
+          "name": "Grenadine Syrup",
+          "name_ko": "그레나딘 시럽",
+          "amount": "1",
+          "unit": "tsp"
+        }
+      ],
+      "garnish": "None",
+      "garnish_ko": "없음",
+      "tips": "다이키리에 그레나딘을 추가한 변형 칵테일 / Daiquiri variant with grenadine"
+    },
+    {
+      "id": 16,
+      "name": "Cuba Libre",
+      "name_ko": "쿠바 리브레",
+      "base": "Rum",
+      "base_ko": "럼",
+      "glass": "Highball Glass",
+      "glass_ko": "하이볼 글라스",
+      "method": "Build",
+      "method_ko": "빌딩",
+      "ingredients": [
+        {
+          "name": "Light Rum",
+          "name_ko": "라이트 럼",
+          "amount": "1.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Lime Juice",
+          "name_ko": "라임주스",
+          "amount": "0.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Cola",
+          "name_ko": "콜라",
+          "amount": "fill",
+          "unit": ""
+        }
+      ],
+      "garnish": "A Wedge of Lemon",
+      "garnish_ko": "레몬 웨지",
+      "tips": "럼과 콜라의 기본 조합 / Basic rum and cola combination"
+    },
+    {
+      "id": 17,
+      "name": "Grasshopper",
+      "name_ko": "그래스호퍼",
+      "base": "Liqueur",
+      "base_ko": "리큐르",
+      "glass": "Champagne Glass (Saucer)",
+      "glass_ko": "샴페인 글라스(소서형)",
+      "method": "Shake",
+      "method_ko": "셰이킹",
+      "ingredients": [
+        {
+          "name": "Creme De Menthe (Green)",
+          "name_ko": "크렘 드 민트(그린)",
+          "amount": "1",
+          "unit": "oz"
+        },
+        {
+          "name": "Creme De Cacao (White)",
+          "name_ko": "크렘 드 카카오(화이트)",
+          "amount": "1",
+          "unit": "oz"
+        },
+        {
+          "name": "Light Milk",
+          "name_ko": "생크림",
+          "amount": "1",
+          "unit": "oz"
+        }
+      ],
+      "garnish": "None",
+      "garnish_ko": "없음",
+      "tips": "초콜릿과 민트, 크림의 조화 / Harmony of chocolate, mint, and cream"
+    },
+    {
+      "id": 18,
+      "name": "Seabreeze",
+      "name_ko": "씨 브리즈",
+      "base": "Vodka",
+      "base_ko": "보드카",
+      "glass": "Highball Glass",
+      "glass_ko": "하이볼 글라스",
+      "method": "Build",
+      "method_ko": "빌딩",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "name_ko": "보드카",
+          "amount": "1.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Cranberry Juice",
+          "name_ko": "크랜베리 주스",
+          "amount": "3",
+          "unit": "oz"
+        },
+        {
+          "name": "Grapefruit Juice",
+          "name_ko": "자몽 주스",
+          "amount": "0.5",
+          "unit": "oz"
+        }
+      ],
+      "garnish": "A Wedge of Lime or Lemon",
+      "garnish_ko": "라임 또는 레몬 웨지",
+      "tips": "바다 바람 같은 상큼한 칵테일 / Fresh sea breeze-like cocktail"
+    },
+    {
+      "id": 19,
+      "name": "Apple Martini",
+      "name_ko": "애플 마티니",
+      "base": "Vodka",
+      "base_ko": "보드카",
+      "glass": "Cocktail Glass",
+      "glass_ko": "칵테일 글라스",
+      "method": "Shake",
+      "method_ko": "셰이킹",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "name_ko": "보드카",
+          "amount": "1",
+          "unit": "oz"
+        },
+        {
+          "name": "Apple Pucker (Sour apple Liqueur)",
+          "name_ko": "애플 리큐르",
+          "amount": "1",
+          "unit": "oz"
+        },
+        {
+          "name": "Lime Juice",
+          "name_ko": "라임주스",
+          "amount": "0.5",
+          "unit": "oz"
+        }
+      ],
+      "garnish": "A Slice of Apple",
+      "garnish_ko": "애플 슬라이스",
+      "tips": "신맛 나는 사과 맛 칵테일 / Tart apple-flavored cocktail"
+    },
+    {
+      "id": 20,
+      "name": "Negroni",
+      "name_ko": "네그로니",
+      "base": "Gin",
+      "base_ko": "진",
+      "glass": "Old-Fashioned Glass",
+      "glass_ko": "올드 패션드 글라스",
+      "method": "Build",
+      "method_ko": "빌딩",
+      "ingredients": [
+        {
+          "name": "Dry Gin",
+          "name_ko": "드라이 진",
+          "amount": "0.75",
+          "unit": "oz"
+        },
+        {
+          "name": "Sweet Vermouth",
+          "name_ko": "스윗 베르무트",
+          "amount": "0.75",
+          "unit": "oz"
+        },
+        {
+          "name": "Campari",
+          "name_ko": "캄파리",
+          "amount": "0.75",
+          "unit": "oz"
+        }
+      ],
+      "garnish": "Twist of Lemon peel",
+      "garnish_ko": "레몬 필 트위스트",
+      "tips": "1:1:1 비율의 정확성이 중요 / 1:1:1 ratio accuracy is crucial"
+    },
+    {
+      "id": 21,
+      "name": "Long Island Iced Tea",
+      "name_ko": "롱 아일랜드 아이스티",
+      "base": "Gin",
+      "base_ko": "진",
+      "glass": "Collins Glass",
+      "glass_ko": "콜린스 글라스",
+      "method": "Build",
+      "method_ko": "빌딩",
+      "ingredients": [
+        {
+          "name": "Dry Gin",
+          "name_ko": "드라이 진",
+          "amount": "0.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Vodka",
+          "name_ko": "보드카",
+          "amount": "0.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Light Rum",
+          "name_ko": "라이트 럼",
+          "amount": "0.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Tequila",
+          "name_ko": "데킬라",
+          "amount": "0.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Triple Sec",
+          "name_ko": "트리플 섹",
+          "amount": "0.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Sweet & Sour Mix",
+          "name_ko": "스윗 & 사워 믹스",
+          "amount": "1.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Cola",
+          "name_ko": "콜라",
+          "amount": "fill",
+          "unit": ""
+        }
+      ],
+      "garnish": "A Wedge of Lime or Lemon",
+      "garnish_ko": "라임 또는 레몬 웨지",
+      "tips": "5가지 주류를 포함한 최강 칵테일 / Strongest cocktail with 5 spirits"
+    },
+    {
+      "id": 22,
+      "name": "Sidecar",
+      "name_ko": "사이드카",
+      "base": "Brandy",
+      "base_ko": "브랜디",
+      "glass": "Cocktail Glass",
+      "glass_ko": "칵테일 글라스",
+      "method": "Shake",
+      "method_ko": "셰이킹",
+      "ingredients": [
+        {
+          "name": "Brandy",
+          "name_ko": "브랜디",
+          "amount": "1",
+          "unit": "oz"
+        },
+        {
+          "name": "Triple Sec",
+          "name_ko": "트리플 섹",
+          "amount": "1",
+          "unit": "oz"
+        },
+        {
+          "name": "Lemon Juice",
+          "name_ko": "레몬주스",
+          "amount": "0.25",
+          "unit": "oz"
+        }
+      ],
+      "garnish": "None",
+      "garnish_ko": "없음",
+      "tips": "1:1:0.5 비율의 정확성 / 1:1:0.5 ratio accuracy"
+    },
+    {
+      "id": 23,
+      "name": "Mai-Tai",
+      "name_ko": "마이 타이",
+      "base": "Rum",
+      "base_ko": "럼",
+      "glass": "Footed Pilsner Glass",
+      "glass_ko": "필스너 글라스",
+      "method": "Blend",
+      "method_ko": "블렌딩",
+      "ingredients": [
+        {
+          "name": "Light Rum",
+          "name_ko": "라이트 럼",
+          "amount": "1.25",
+          "unit": "oz"
+        },
+        {
+          "name": "Triple Sec",
+          "name_ko": "트리플 섹",
+          "amount": "0.75",
+          "unit": "oz"
+        },
+        {
+          "name": "Lime Juice",
+          "name_ko": "라임주스",
+          "amount": "1",
+          "unit": "oz"
+        },
+        {
+          "name": "Pineapple Juice",
+          "name_ko": "파인애플 주스",
+          "amount": "1",
+          "unit": "oz"
+        },
+        {
+          "name": "Orange Juice",
+          "name_ko": "오렌지 주스",
+          "amount": "1",
+          "unit": "oz"
+        },
+        {
+          "name": "Grenadine Syrup",
+          "name_ko": "그레나딘 시럽",
+          "amount": "0.25",
+          "unit": "oz"
+        }
+      ],
+      "garnish": "A Wedge of fresh Pineapple (Orange) & Cherry",
+      "garnish_ko": "신선한 파인애플과 오렌지, 체리",
+      "tips": "마이 타이는 '최고'라는 뜻, 최고의 칵테일 / Mai Tai means 'the best'"
+    },
+    {
+      "id": 24,
+      "name": "Pina Colada",
+      "name_ko": "피나 콜라다",
+      "base": "Rum",
+      "base_ko": "럼",
+      "glass": "Footed Pilsner Glass",
+      "glass_ko": "필스너 글라스",
+      "method": "Blend",
+      "method_ko": "블렌딩",
+      "ingredients": [
+        {
+          "name": "Light Rum",
+          "name_ko": "라이트 럼",
+          "amount": "1.25",
+          "unit": "oz"
+        },
+        {
+          "name": "Pina Colada Mix",
+          "name_ko": "피나 콜라다 믹스",
+          "amount": "2",
+          "unit": "oz"
+        },
+        {
+          "name": "Pineapple Juice",
+          "name_ko": "파인애플 주스",
+          "amount": "2",
+          "unit": "oz"
+        }
+      ],
+      "garnish": "A Wedge of fresh Pineapple & Cherry",
+      "garnish_ko": "신선한 파인애플과 체리",
+      "tips": "블렌드 칵테일, 파인애플과 코코넛의 조화 / Blend cocktail with pineapple and coconut"
+    },
+    {
+      "id": 25,
+      "name": "Cosmopolitan Cocktail",
+      "name_ko": "코스모폴리탄",
+      "base": "Vodka",
+      "base_ko": "보드카",
+      "glass": "Cocktail Glass",
+      "glass_ko": "칵테일 글라스",
+      "method": "Shake",
+      "method_ko": "셰이킹",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "name_ko": "보드카",
+          "amount": "1",
+          "unit": "oz"
+        },
+        {
+          "name": "Triple Sec",
+          "name_ko": "트리플 섹",
+          "amount": "0.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Lime Juice",
+          "name_ko": "라임주스",
+          "amount": "0.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Cranberry Juice",
+          "name_ko": "크랜베리 주스",
+          "amount": "0.5",
+          "unit": "oz"
+        }
+      ],
+      "garnish": "Twist of Lime or Lemon peel",
+      "garnish_ko": "라임 또는 레몬 필 트위스트",
+      "tips": "섹스앤더씨티의 대표 칵테일 / Iconic cocktail from Sex and the City"
+    },
+    {
+      "id": 26,
+      "name": "Moscow Mule",
+      "name_ko": "모스코 뮬",
+      "base": "Vodka",
+      "base_ko": "보드카",
+      "glass": "Highball Glass",
+      "glass_ko": "하이볼 글라스",
+      "method": "Build",
+      "method_ko": "빌딩",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "name_ko": "보드카",
+          "amount": "1.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Lime Juice",
+          "name_ko": "라임주스",
+          "amount": "0.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Ginger ale",
+          "name_ko": "진저 에일",
+          "amount": "fill",
+          "unit": ""
+        }
+      ],
+      "garnish": "A Slice of Lime or Lemon",
+      "garnish_ko": "라임 또는 레몬 슬라이스",
+      "tips": "구리 잔(Moscow Mule cup)에 담는 것이 정통 / Traditionally served in copper mug"
+    },
+    {
+      "id": 27,
+      "name": "Apricot Cocktail",
+      "name_ko": "에이프리컷 칵테일",
+      "base": "Brandy",
+      "base_ko": "브랜디",
+      "glass": "Cocktail Glass",
+      "glass_ko": "칵테일 글라스",
+      "method": "Shake",
+      "method_ko": "셰이킹",
+      "ingredients": [
+        {
+          "name": "Apricot Flavored Brandy",
+          "name_ko": "에이프리컷 향 브랜디",
+          "amount": "1.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Dry Gin",
+          "name_ko": "드라이 진",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Lemon Juice",
+          "name_ko": "레몬주스",
+          "amount": "0.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Orange Juice",
+          "name_ko": "오렌지 주스",
+          "amount": "0.5",
+          "unit": "oz"
+        }
+      ],
+      "garnish": "None",
+      "garnish_ko": "없음",
+      "tips": "살구 향의 부드러운 칵테일 / Soft apricot-flavored cocktail"
+    },
+    {
+      "id": 28,
+      "name": "Honeymoon Cocktail",
+      "name_ko": "허니문 칵테일",
+      "base": "Brandy",
+      "base_ko": "브랜디",
+      "glass": "Cocktail Glass",
+      "glass_ko": "칵테일 글라스",
+      "method": "Shake",
+      "method_ko": "셰이킹",
+      "ingredients": [
+        {
+          "name": "Apple Brandy",
+          "name_ko": "애플 브랜디",
+          "amount": "0.75",
+          "unit": "oz"
+        },
+        {
+          "name": "Benedictine DOM",
+          "name_ko": "베네딕틴",
+          "amount": "0.75",
+          "unit": "oz"
+        },
+        {
+          "name": "Triple Sec",
+          "name_ko": "트리플 섹",
+          "amount": "0.25",
+          "unit": "oz"
+        },
+        {
+          "name": "Lemon Juice",
+          "name_ko": "레몬주스",
+          "amount": "0.5",
+          "unit": "oz"
+        }
+      ],
+      "garnish": "None",
+      "garnish_ko": "없음",
+      "tips": "사과와 약초의 상큼한 조합 / Fresh combination of apple and herbs"
+    },
+    {
+      "id": 29,
+      "name": "Blue Hawaiian",
+      "name_ko": "블루 하와이안",
+      "base": "Rum",
+      "base_ko": "럼",
+      "glass": "Footed Pilsner Glass",
+      "glass_ko": "필스너 글라스",
+      "method": "Blend",
+      "method_ko": "블렌딩",
+      "ingredients": [
+        {
+          "name": "Light Rum",
+          "name_ko": "라이트 럼",
+          "amount": "1",
+          "unit": "oz"
+        },
+        {
+          "name": "Blue Curacao",
+          "name_ko": "블루 큐라소",
+          "amount": "1",
+          "unit": "oz"
+        },
+        {
+          "name": "Coconut Flavored Rum",
+          "name_ko": "코코넛 향 럼",
+          "amount": "1",
+          "unit": "oz"
+        },
+        {
+          "name": "Pineapple Juice",
+          "name_ko": "파인애플 주스",
+          "amount": "2.5",
+          "unit": "oz"
+        }
+      ],
+      "garnish": "A Wedge of fresh Pineapple & Cherry",
+      "garnish_ko": "신선한 파인애플과 체리",
+      "tips": "하와이 스타일의 블루 색상 칵테일 / Hawaiian style blue-colored cocktail"
+    },
+    {
+      "id": 30,
+      "name": "Kir",
+      "name_ko": "키르",
+      "base": "White Wine",
+      "base_ko": "화이트 와인",
+      "glass": "White Wine Glass",
+      "glass_ko": "화이트 와인 글라스",
+      "method": "Build",
+      "method_ko": "빌딩",
+      "ingredients": [
+        {
+          "name": "White Wine",
+          "name_ko": "화이트 와인",
+          "amount": "3",
+          "unit": "oz"
+        },
+        {
+          "name": "Creme de Cassis",
+          "name_ko": "크렘 드 카시스",
+          "amount": "0.5",
+          "unit": "oz"
+        }
+      ],
+      "garnish": "Twist of Lemon peel",
+      "garnish_ko": "레몬 필 트위스트",
+      "tips": "와인과 크림 드 카시스, 프랑스식 칵테일 / French-style wine cocktail with cassis"
+    },
+    {
+      "id": 31,
+      "name": "Tequila Sunrise",
+      "name_ko": "데킬라 선라이즈",
+      "base": "Tequila",
+      "base_ko": "데킬라",
+      "glass": "Footed Pilsner Glass",
+      "glass_ko": "필스너 글라스",
+      "method": "Build/Float",
+      "method_ko": "빌딩/플로팅",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "name_ko": "데킬라",
+          "amount": "1.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Orange Juice",
+          "name_ko": "오렌지 주스",
+          "amount": "fill",
+          "unit": ""
+        },
+        {
+          "name": "Grenadine Syrup",
+          "name_ko": "그레나딘 시럽",
+          "amount": "0.5",
+          "unit": "oz"
+        }
+      ],
+      "garnish": "None",
+      "garnish_ko": "없음",
+      "tips": "일출의 색상, 그레나딘이 가라앉으며 아름다운 층 형성 / Sunrise colors with beautiful layers as grenadine settles"
+    },
+    {
+      "id": 32,
+      "name": "Healing",
+      "name_ko": "힐링",
+      "base": "Korean Liquor",
+      "base_ko": "한국전통주",
+      "glass": "Cocktail Glass",
+      "glass_ko": "칵테일 글라스",
+      "method": "Shake",
+      "method_ko": "셰이킹",
+      "ingredients": [
+        {
+          "name": "Gam Hong Ro (40도)",
+          "name_ko": "감홍로(40도)",
+          "amount": "1.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Benedictine DOM",
+          "name_ko": "베네딕틴",
+          "amount": "1/3",
+          "unit": "oz"
+        },
+        {
+          "name": "Creme de Cassis",
+          "name_ko": "크렘 드 카시스",
+          "amount": "1/3",
+          "unit": "oz"
+        },
+        {
+          "name": "Sweet & Sour Mix",
+          "name_ko": "스윗 & 사워 믹스",
+          "amount": "1",
+          "unit": "oz"
+        }
+      ],
+      "garnish": "Twist of Lemon peel",
+      "garnish_ko": "레몬 필 트위스트",
+      "tips": "한국 전통주를 활용한 웰빙 칵테일 / Wellness cocktail using Korean traditional liquor"
+    },
+    {
+      "id": 33,
+      "name": "Jindo",
+      "name_ko": "진도",
+      "base": "Korean Liquor",
+      "base_ko": "한국전통주",
+      "glass": "Cocktail Glass",
+      "glass_ko": "칵테일 글라스",
+      "method": "Shake",
+      "method_ko": "셰이킹",
+      "ingredients": [
+        {
+          "name": "Jindo Hong Ju (40도)",
+          "name_ko": "진도홍주(40도)",
+          "amount": "1",
+          "unit": "oz"
+        },
+        {
+          "name": "Creme de Menthe White",
+          "name_ko": "크렘 드 민트(화이트)",
+          "amount": "0.5",
+          "unit": "oz"
+        },
+        {
+          "name": "White Grape Juice",
+          "name_ko": "청포도주스",
+          "amount": "0.75",
+          "unit": "oz"
+        },
+        {
+          "name": "Raspberry Syrup",
+          "name_ko": "라즈베리 시럽",
+          "amount": "0.5",
+          "unit": "oz"
+        }
+      ],
+      "garnish": "None",
+      "garnish_ko": "없음",
+      "tips": "진도의 명주인 홍주를 기반으로 한 칵테일 / Cocktail based on Jindo's famous red wine"
+    },
+    {
+      "id": 34,
+      "name": "Puppy Love",
+      "name_ko": "풋사랑",
+      "base": "Korean Liquor",
+      "base_ko": "한국전통주",
+      "glass": "Cocktail Glass",
+      "glass_ko": "칵테일 글라스",
+      "method": "Shake",
+      "method_ko": "셰이킹",
+      "ingredients": [
+        {
+          "name": "Andong Soju (35도)",
+          "name_ko": "안동소주(35도)",
+          "amount": "1",
+          "unit": "oz"
+        },
+        {
+          "name": "Triple Sec",
+          "name_ko": "트리플 섹",
+          "amount": "1/3",
+          "unit": "oz"
+        },
+        {
+          "name": "Apple Pucker (Sour apple Liqueur)",
+          "name_ko": "애플 리큐르",
+          "amount": "1",
+          "unit": "oz"
+        },
+        {
+          "name": "Lime Juice",
+          "name_ko": "라임주스",
+          "amount": "1/3",
+          "unit": "oz"
+        }
+      ],
+      "garnish": "A Slice of Apple",
+      "garnish_ko": "애플 슬라이스",
+      "tips": "사랑스러운 핑크색의 한국 소주 칵테일 / Lovely pink-colored Korean soju cocktail"
+    },
+    {
+      "id": 35,
+      "name": "Geumsan",
+      "name_ko": "금산",
+      "base": "Korean Liquor",
+      "base_ko": "한국전통주",
+      "glass": "Cocktail Glass",
+      "glass_ko": "칵테일 글라스",
+      "method": "Shake",
+      "method_ko": "셰이킹",
+      "ingredients": [
+        {
+          "name": "Geumsan Insamju (43도)",
+          "name_ko": "금산인삼주(43도)",
+          "amount": "1.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Coffee Liqueur (Kahlúa)",
+          "name_ko": "커피 리큐르",
+          "amount": "0.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Apple Pucker (Sour apple Liqueur)",
+          "name_ko": "애플 리큐르",
+          "amount": "0.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Lime Juice",
+          "name_ko": "라임주스",
+          "amount": "1",
+          "unit": "tsp"
+        }
+      ],
+      "garnish": "None",
+      "garnish_ko": "없음",
+      "tips": "인삼 성분의 건강한 한국 칵테일 / Healthy Korean cocktail with ginseng"
+    },
+    {
+      "id": 36,
+      "name": "Gochang",
+      "name_ko": "고창",
+      "base": "Korean Liquor",
+      "base_ko": "한국전통주",
+      "glass": "Flute Champagne Glass",
+      "glass_ko": "플루트 샴페인 글라스",
+      "method": "Stir",
+      "method_ko": "스터링",
+      "ingredients": [
+        {
+          "name": "Sunwoonsan Bokbunja Wine",
+          "name_ko": "순원산 복분자주",
+          "amount": "2",
+          "unit": "oz"
+        },
+        {
+          "name": "Triple Sec",
+          "name_ko": "트리플 섹",
+          "amount": "0.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Sprite",
+          "name_ko": "스프라이트",
+          "amount": "2",
+          "unit": "oz"
+        }
+      ],
+      "garnish": "None",
+      "garnish_ko": "없음",
+      "tips": "고창 지역의 명주인 복분자를 활용한 칵테일 / Cocktail using Gochang's famous blackberry wine"
+    },
+    {
+      "id": 37,
+      "name": "Gin Fizz",
+      "name_ko": "진 피즈",
+      "base": "Gin",
+      "base_ko": "진",
+      "glass": "Highball Glass",
+      "glass_ko": "하이볼 글라스",
+      "method": "Shake/Build",
+      "method_ko": "셰이킹/빌딩",
+      "ingredients": [
+        {
+          "name": "Dry Gin",
+          "name_ko": "드라이 진",
+          "amount": "1.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Lemon Juice",
+          "name_ko": "레몬주스",
+          "amount": "0.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Powdered Sugar",
+          "name_ko": "설탕",
+          "amount": "1",
+          "unit": "tsp"
+        },
+        {
+          "name": "Soda Water",
+          "name_ko": "소다수",
+          "amount": "fill",
+          "unit": ""
+        }
+      ],
+      "garnish": "A Slice of Lemon",
+      "garnish_ko": "레몬 슬라이스",
+      "tips": "상큼한 진 기반의 피즈 칵테일 / Fresh gin-based fizz cocktail"
+    },
+    {
+      "id": 38,
+      "name": "Fresh Lemon Squash",
+      "name_ko": "프레시 레몬 스쿠시",
+      "base": "Non-Alcoholic",
+      "base_ko": "논알콜",
+      "glass": "Highball Glass",
+      "glass_ko": "하이볼 글라스",
+      "method": "Build",
+      "method_ko": "빌딩",
+      "ingredients": [
+        {
+          "name": "Fresh squeezed Lemon",
+          "name_ko": "신선한 레몬",
+          "amount": "0.5",
+          "unit": "ea"
+        },
+        {
+          "name": "Powdered Sugar",
+          "name_ko": "설탕",
+          "amount": "2",
+          "unit": "tsp"
+        },
+        {
+          "name": "Soda Water",
+          "name_ko": "소다수",
+          "amount": "fill",
+          "unit": ""
+        }
+      ],
+      "garnish": "A Slice of Lemon",
+      "garnish_ko": "레몬 슬라이스",
+      "tips": "진정한 상큼함, 무알콜 칵테일 / True freshness, non-alcoholic cocktail"
+    },
+    {
+      "id": 39,
+      "name": "Virgin Fruit Punch",
+      "name_ko": "버진 프루트 펀치",
+      "base": "Non-Alcoholic",
+      "base_ko": "논알콜",
+      "glass": "Footed Pilsner Glass",
+      "glass_ko": "필스너 글라스",
+      "method": "Blend",
+      "method_ko": "블렌딩",
+      "ingredients": [
+        {
+          "name": "Orange Juice",
+          "name_ko": "오렌지 주스",
+          "amount": "1",
+          "unit": "oz"
+        },
+        {
+          "name": "Pineapple Juice",
+          "name_ko": "파인애플 주스",
+          "amount": "1",
+          "unit": "oz"
+        },
+        {
+          "name": "Cranberry Juice",
+          "name_ko": "크랜베리 주스",
+          "amount": "1",
+          "unit": "oz"
+        },
+        {
+          "name": "Grapefruit Juice",
+          "name_ko": "자몽 주스",
+          "amount": "1",
+          "unit": "oz"
+        },
+        {
+          "name": "Lemon Juice",
+          "name_ko": "레몬주스",
+          "amount": "0.5",
+          "unit": "oz"
+        },
+        {
+          "name": "Grenadine Syrup",
+          "name_ko": "그레나딘 시럽",
+          "amount": "0.5",
+          "unit": "oz"
+        }
+      ],
+      "garnish": "A Wedge of fresh Pineapple & Cherry",
+      "garnish_ko": "신선한 파인애플과 체리",
+      "tips": "상큼한 과일 칵테일, 무알콜 / Fresh fruit cocktail, non-alcoholic"
+    },
+    {
+      "id": 40,
+      "name": "Boulevardier",
+      "name_ko": "블루바르디에",
+      "base": "Whiskey",
+      "base_ko": "위스키",
+      "glass": "Old-Fashioned Glass",
+      "glass_ko": "올드 패션드 글라스",
+      "method": "Stir",
+      "method_ko": "스터링",
+      "ingredients": [
+        {
+          "name": "Bourbon Whiskey",
+          "name_ko": "버번 위스키",
+          "amount": "1",
+          "unit": "oz"
+        },
+        {
+          "name": "Sweet Vermouth",
+          "name_ko": "스윗 베르무트",
+          "amount": "1",
+          "unit": "oz"
+        },
+        {
+          "name": "Campari",
+          "name_ko": "캄파리",
+          "amount": "1",
+          "unit": "oz"
+        }
+      ],
+      "garnish": "Twist of Orange peel",
+      "garnish_ko": "오렌지 필 트위스트",
+      "tips": "네그로니의 위스키 변형 / Whiskey variation of Negroni"
+    }
+  ]
+}
