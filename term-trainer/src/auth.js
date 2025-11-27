@@ -1,5 +1,5 @@
 // src/auth.js
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const { readJson, writeJson } = require("./db");
 
 const USERS_FILE = "users.json";
