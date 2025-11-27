@@ -35,6 +35,14 @@ createApp({
         result: null,
         totalDue: null,
       },
+      editingTermId: null,
+      editTermForm: {
+        ko: "",
+        en: "",
+        definitionKo: "",
+        definitionEn: "",
+        tagsText: "",
+      },
     };
   },
   methods: {
@@ -148,7 +156,8 @@ createApp({
         if (!res.ok) {
           throw new Error(data.message || "용어 조회 실패");
         }
-        this.terms = data;
+        this.terms = (data || []).filter((t) => t && t.id);
+        console.log(this.terms);
       } catch (e) {
         this.setError(e.message);
       } finally {
@@ -282,6 +291,106 @@ createApp({
         this.quiz.userAnswer = "";
         this.quiz.result = null;
       }
+    },
+    methods: {
+      // ...기존 signup, login, loadTerms, addTerm 등...
+
+      startEdit(term) {
+        this.editingTermId = term.id;
+        this.editTermForm = {
+          ko: term.ko,
+          en: term.en,
+          definitionKo: term.definitionKo || "",
+          definitionEn: term.definitionEn || "",
+          tagsText: term.tags && term.tags.length ? term.tags.join(", ") : "",
+        };
+        this.errorMessage = "";
+        this.successMessage = "";
+      },
+
+      cancelEdit() {
+        this.editingTermId = null;
+        this.editTermForm = {
+          ko: "",
+          en: "",
+          definitionKo: "",
+          definitionEn: "",
+          tagsText: "",
+        };
+      },
+
+      async saveEdit(term) {
+        this.errorMessage = "";
+        this.successMessage = "";
+        if (!this.editTermForm.ko || !this.editTermForm.en) {
+          this.errorMessage = "한국어/영어 용어는 필수입니다.";
+          return;
+        }
+
+        this.loading = true;
+        try {
+          const payload = {
+            ko: this.editTermForm.ko,
+            en: this.editTermForm.en,
+            definitionKo: this.editTermForm.definitionKo,
+            definitionEn: this.editTermForm.definitionEn,
+            tags: this.editTermForm.tagsText
+              ? this.editTermForm.tagsText
+                  .split(",")
+                  .map((t) => t.trim())
+                  .filter(Boolean)
+              : [],
+          };
+
+          const res = await fetch(`/api/terms/${term.id}`, {
+            method: "PUT",
+            headers: this.apiHeaders(),
+            body: JSON.stringify(payload),
+          });
+          const data = await res.json();
+          if (!res.ok || !data.ok) {
+            throw new Error(data.message || "용어 수정 실패");
+          }
+
+          // terms 배열에서 해당 용어 교체
+          const idx = this.terms.findIndex((t) => t.id === term.id);
+          if (idx !== -1) {
+            this.terms[idx] = data.term;
+          }
+
+          this.successMessage = "용어가 수정되었습니다.";
+          this.cancelEdit();
+        } catch (e) {
+          this.errorMessage = e.message;
+        } finally {
+          this.loading = false;
+        }
+      },
+
+      async deleteTerm(term) {
+        if (!confirm(`"${term.ko}" 용어를 삭제하시겠습니까?`)) return;
+
+        this.errorMessage = "";
+        this.successMessage = "";
+        this.loading = true;
+        try {
+          const res = await fetch(`/api/terms/${term.id}`, {
+            method: "DELETE",
+            headers: this.apiHeaders(),
+          });
+          const data = await res.json();
+          if (!res.ok || !data.ok) {
+            throw new Error(data.message || "용어 삭제 실패");
+          }
+
+          this.terms = this.terms.filter((t) => t.id !== term.id);
+          this.successMessage = "용어가 삭제되었습니다.";
+        } catch (e) {
+          this.errorMessage = e.message;
+        } finally {
+          this.loading = false;
+        }
+      },
     },
   },
   computed: {

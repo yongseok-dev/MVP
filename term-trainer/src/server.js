@@ -250,6 +250,70 @@ app.post("/api/terms", (req, res) => {
 
   res.json({ ok: true, term: newTerm });
 });
+// 용어 수정
+app.put("/api/terms/:id", (req, res) => {
+  if (!req.userId) {
+    return res.status(401).json({ ok: false, message: "로그인이 필요합니다." });
+  }
+
+  const termId = req.params.id;
+  const { ko, en, definitionKo, definitionEn, tags } = req.body;
+
+  if (!ko || !en) {
+    return res
+      .status(400)
+      .json({ ok: false, message: "ko, en 은 필수입니다." });
+  }
+
+  const terms = readJson("terms.json");
+  const idx = terms.findIndex(
+    (t) => t.id === termId && t.userId === req.userId
+  );
+
+  if (idx === -1) {
+    return res
+      .status(404)
+      .json({ ok: false, message: "용어를 찾을 수 없습니다." });
+  }
+
+  const term = terms[idx];
+
+  term.ko = ko;
+  term.en = en;
+  term.definitionKo = definitionKo || "";
+  term.definitionEn = definitionEn || "";
+  term.tags = tags || term.tags || [];
+  term.updatedAt = new Date().toISOString();
+
+  terms[idx] = term;
+  writeJson("terms.json", terms);
+
+  return res.json({ ok: true, term });
+});
+
+// 용어 삭제
+app.delete("/api/terms/:id", (req, res) => {
+  if (!req.userId) {
+    return res.status(401).json({ ok: false, message: "로그인이 필요합니다." });
+  }
+
+  const termId = req.params.id;
+  const terms = readJson("terms.json");
+  const idx = terms.findIndex(
+    (t) => t.id === termId && t.userId === req.userId
+  );
+
+  if (idx === -1) {
+    return res
+      .status(404)
+      .json({ ok: false, message: "용어를 찾을 수 없습니다." });
+  }
+
+  terms.splice(idx, 1);
+  writeJson("terms.json", terms);
+
+  return res.json({ ok: true });
+});
 
 // 🔹 오늘 복습할 용어 중에서 랜덤으로 몇 개 뽑기
 // GET /api/quiz?mode=ko-en&count=10

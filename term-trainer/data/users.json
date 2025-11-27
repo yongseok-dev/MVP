@@ -1,14 +1,1 @@
-[
-  {
-    "id": "u_1",
-    "username": "testuser",
-    "passwordHash": "$2b$10$QjwbRzETmst5IO67PILlPOoOTllrwbnbYhzEFIt.gQvMsO3O1BTm6",
-    "createdAt": "2025-11-27T11:29:00.736Z"
-  },
-  {
-    "id": "u_2",
-    "username": "user",
-    "passwordHash": "$2b$10$zP73WQpjxWOpLapla2z9wuuPDUt1xy3U7Yh2QJzRjvbKZJa8lxj9.",
-    "createdAt": "2025-11-27T11:41:28.474Z"
-  }
-]
+[]

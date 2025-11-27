@@ -2,314 +2,625 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <title>용어 학습 시스템</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Term Trainer - 어휘 학습 도구</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="./style.css" />
+
     <style>
-      body {
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-          sans-serif;
-        margin: 0;
-        padding: 16px;
-        background: #f5f5f5;
+      /* Bootstrap 5 오버라이드 */
+      .navbar-brand {
+        font-weight: 700;
+        font-size: 1.5rem;
+        letter-spacing: -0.02em;
       }
-      .container {
-        max-width: 800px;
-        margin: 0 auto;
-        background: white;
-        padding: 16px 20px;
-        border-radius: 8px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+
+      .btn-primary {
+        background-color: #4f46e5;
+        border-color: #4f46e5;
       }
-      h1 {
-        margin-top: 0;
-      }
-      input,
-      button,
-      textarea {
-        font: inherit;
-      }
-      .field {
-        margin-bottom: 8px;
-      }
-      .field label {
-        display: block;
-        font-size: 0.9rem;
-        margin-bottom: 4px;
-      }
-      .field input,
-      .field textarea {
-        width: 100%;
-        padding: 6px 8px;
-        border-radius: 4px;
-        border: 1px solid #ccc;
-        box-sizing: border-box;
-      }
-      .row {
-        display: flex;
-        gap: 16px;
-        margin-bottom: 16px;
-        flex-wrap: wrap;
-      }
-      .card {
-        border: 1px solid #ddd;
-        border-radius: 6px;
-        padding: 8px 10px;
-        margin-bottom: 8px;
-        background: #fafafa;
-      }
-      .term-ko {
-        font-weight: 600;
-      }
-      .term-en {
-        color: #555;
-        font-size: 0.95rem;
-      }
-      .small {
-        font-size: 0.8rem;
-        color: #777;
-      }
-      .error {
-        color: #c00;
-        margin-bottom: 8px;
-        font-size: 0.9rem;
-      }
-      .success {
-        color: #007700;
-        margin-bottom: 8px;
-        font-size: 0.9rem;
-      }
-      .btn {
-        padding: 6px 12px;
-        border-radius: 4px;
-        border: 1px solid #007bff;
-        background: #007bff;
-        color: white;
-        cursor: pointer;
-      }
-      .btn.secondary {
-        border-color: #ccc;
-        background: #eee;
-        color: #333;
-      }
-      .btn:disabled {
-        opacity: 0.6;
-        cursor: default;
-      }
-      .top-bar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 16px;
+
+      .btn-primary:hover {
+        background-color: #4338ca;
+        border-color: #4338ca;
       }
     </style>
   </head>
   <body>
     <div id="app">
-      <div class="container">
-        <div class="top-bar">
-          <h1>용어 학습 시스템</h1>
-          <div v-if="currentUser">
-            <span class="small">{{ currentUser.username }} 님</span>
-            <button class="btn secondary" @click="logout">로그아웃</button>
+      <!-- 헤더 -->
+      <nav
+        class="navbar navbar-expand-lg navbar-light bg-light mb-4 border-bottom"
+      >
+        <div class="container-lg">
+          <span class="navbar-brand">
+            <i class="bi bi-book"></i> Term Trainer
+          </span>
+          <div class="ms-auto" v-if="currentUser">
+            <span class="text-muted small me-3">
+              <i class="bi bi-person-circle"></i> {{ currentUser.username }}
+            </span>
+            <button class="btn btn-sm btn-outline-secondary" @click="logout">
+              <i class="bi bi-box-arrow-right"></i> 로그아웃
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      <!-- 알림 메시지 -->
+      <div class="container-lg">
+        <div
+          v-if="errorMessage"
+          class="alert alert-danger alert-dismissible fade show"
+          role="alert"
+        >
+          <i class="bi bi-exclamation-circle"></i> {{ errorMessage }}
+          <button
+            type="button"
+            class="btn-close"
+            @click="errorMessage = ''"
+            aria-label="Close"
+          ></button>
+        </div>
+
+        <div
+          v-if="successMessage"
+          class="alert alert-success alert-dismissible fade show"
+          role="alert"
+        >
+          <i class="bi bi-check-circle"></i> {{ successMessage }}
+          <button
+            type="button"
+            class="btn-close"
+            @click="successMessage = ''"
+            aria-label="Close"
+          ></button>
+        </div>
+
+        <!-- 로그인/회원가입 화면 -->
+        <div v-if="!currentUser" class="row mb-5">
+          <!-- 로그인 -->
+          <div class="col-md-6">
+            <div class="card shadow-sm">
+              <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">
+                  <i class="bi bi-box-arrow-in-right"></i> 로그인
+                </h5>
+              </div>
+              <div class="card-body">
+                <form @submit.prevent="login">
+                  <div class="mb-3">
+                    <label for="login-username" class="form-label"
+                      >사용자명</label
+                    >
+                    <input
+                      id="login-username"
+                      type="text"
+                      class="form-control"
+                      v-model="loginForm.username"
+                      autocomplete="username"
+                      placeholder="사용자명 입력"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="login-password" class="form-label"
+                      >비밀번호</label
+                    >
+                    <input
+                      id="login-password"
+                      type="password"
+                      class="form-control"
+                      v-model="loginForm.password"
+                      autocomplete="current-password"
+                      placeholder="비밀번호 입력"
+                      required
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    class="btn btn-primary w-100"
+                    :disabled="loading"
+                  >
+                    <span
+                      v-if="loading"
+                      class="spinner-border spinner-border-sm me-2"
+                      role="status"
+                      aria-hidden="true"
+                    ></span>
+                    {{ loading ? '로그인 중...' : '로그인' }}
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- 회원가입 -->
+          <div class="col-md-6">
+            <div class="card shadow-sm">
+              <div class="card-header bg-success text-white">
+                <h5 class="mb-0"><i class="bi bi-person-plus"></i> 회원가입</h5>
+              </div>
+              <div class="card-body">
+                <form @submit.prevent="signup">
+                  <div class="mb-3">
+                    <label for="signup-username" class="form-label"
+                      >사용자명</label
+                    >
+                    <input
+                      id="signup-username"
+                      type="text"
+                      class="form-control"
+                      v-model="signupForm.username"
+                      autocomplete="username"
+                      placeholder="사용자명 입력"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="signup-password" class="form-label"
+                      >비밀번호</label
+                    >
+                    <input
+                      id="signup-password"
+                      type="password"
+                      class="form-control"
+                      v-model="signupForm.password"
+                      autocomplete="new-password"
+                      placeholder="비밀번호 입력"
+                      required
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    class="btn btn-success w-100"
+                    :disabled="loading"
+                  >
+                    <span
+                      v-if="loading"
+                      class="spinner-border spinner-border-sm me-2"
+                      role="status"
+                      aria-hidden="true"
+                    ></span>
+                    {{ loading ? '가입 중...' : '회원가입' }}
+                  </button>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- 에러 / 성공 메시지 -->
-        <div v-if="errorMessage" class="error">{{ errorMessage }}</div>
-        <div v-if="successMessage" class="success">{{ successMessage }}</div>
-
-        <!-- 로그인 안 된 상태 -->
-        <div v-if="!currentUser">
-          <div class="row">
-            <!-- 로그인 폼 -->
-            <div style="flex: 1 1 260px">
-              <h2>로그인</h2>
-              <form @submit.prevent="login">
-                <div class="field">
-                  <label>아이디</label>
-                  <input v-model="loginForm.username" autocomplete="username" />
-                </div>
-                <div class="field">
-                  <label>비밀번호</label>
-                  <input
-                    type="password"
-                    v-model="loginForm.password"
-                    autocomplete="current-password"
-                  />
-                </div>
-                <button class="btn" type="submit" :disabled="loading">
-                  로그인
-                </button>
-              </form>
-            </div>
-
-            <!-- 회원가입 폼 -->
-            <div style="flex: 1 1 260px">
-              <h2>회원가입</h2>
-              <form @submit.prevent="signup">
-                <div class="field">
-                  <label>아이디</label>
-                  <input
-                    v-model="signupForm.username"
-                    autocomplete="username"
-                  />
-                </div>
-                <div class="field">
-                  <label>비밀번호</label>
-                  <input
-                    type="password"
-                    v-model="signupForm.password"
-                    autocomplete="new-password"
-                  />
-                </div>
-                <button class="btn secondary" type="submit" :disabled="loading">
-                  회원가입
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-
-        <!-- 로그인 된 상태 -->
+        <!-- 메인 콘텐츠 (로그인 후) -->
         <div v-else>
-          <!-- 🔹 퀴즈 영역 -->
-          <h2 style="margin-top: 24px">퀴즈</h2>
-          <div class="field">
-            <label>퀴즈 모드</label>
-            <select v-model="quiz.mode">
-              <option value="ko-en">한국어 → 영어</option>
-              <option value="en-ko">영어 → 한국어</option>
-            </select>
-          </div>
-          <button class="btn secondary" @click="loadQuiz" :disabled="loading">
-            오늘 복습 문제 불러오기
-          </button>
-          <p class="small" v-if="quiz.totalDue !== null">
-            오늘 복습 대상: {{ quiz.totalDue }}개 / 현재 세션: {{
-            quiz.questions.length }}개
-          </p>
-
-          <div v-if="quiz.questions.length > 0">
-            <div class="card" style="margin-top: 8px">
-              <div class="small">
-                문제 {{ quiz.currentIndex + 1 }} / {{ quiz.questions.length }}
-              </div>
-              <div style="margin-top: 4px; margin-bottom: 8px">
-                <span v-if="quiz.mode === 'ko-en'">
-                  <strong>Q.</strong> 아래 한국어 용어의 영어 표기를
-                  입력하세요.<br />
-                  <strong>{{ currentQuestion.ko }}</strong>
-                </span>
-                <span v-else>
-                  <strong>Q.</strong> 아래 영어 용어의 한국어 용어를
-                  입력하세요.<br />
-                  <strong>{{ currentQuestion.en }}</strong>
-                </span>
-              </div>
-
-              <div class="field">
-                <label>내 답</label>
-                <input v-model="quiz.userAnswer" @keyup.enter="submitAnswer" />
-              </div>
-
-              <button class="btn" @click="submitAnswer" :disabled="loading">
-                정답 제출
+          <!-- 퀴즈 섹션 -->
+          <section class="mb-5">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h2><i class="bi bi-question-circle"></i> 복습 문제</h2>
+              <button
+                class="btn btn-primary"
+                @click="loadQuiz"
+                :disabled="loading"
+              >
+                <i class="bi bi-arrow-clockwise"></i>
+                {{ loading ? '불러오는 중...' : '오늘 복습 문제 불러오기' }}
               </button>
+            </div>
 
-              <div v-if="quiz.result !== null" style="margin-top: 8px">
-                <div v-if="quiz.result.correct" class="success">
-                  정답입니다! ✅ (다음 복습일: {{ quiz.result.nextReviewAt }})
+            <!-- 모드 선택 -->
+            <div class="row mb-3">
+              <div class="col-md-4">
+                <label class="form-label">학습 모드</label>
+                <select v-model="quiz.mode" class="form-select">
+                  <option value="ko-en">한국어 → 영어</option>
+                  <option value="en-ko">영어 → 한국어</option>
+                </select>
+              </div>
+              <div class="col-md-8" v-if="quiz.totalDue !== null">
+                <div class="alert alert-info mb-0">
+                  <strong>
+                    <i class="bi bi-info-circle"></i>
+                    오늘 복습 대상: {{ quiz.totalDue }}개
+                  </strong>
+                  <span class="text-muted ms-2"
+                    >/ 현재 세션: {{ quiz.questions.length }}개</span
+                  >
                 </div>
-                <div v-else class="error">
-                  오답입니다 ❌ 정답: {{ quiz.result.correctAnswer }}<br />
-                  (다음 복습일: {{ quiz.result.nextReviewAt }})
+              </div>
+            </div>
+
+            <!-- 퀴즈 콘텐츠 -->
+            <div v-if="quiz.questions.length > 0">
+              <div class="quiz-question card mb-4">
+                <div class="quiz-progress text-muted small">
+                  <i class="bi bi-collection"></i>
+                  {{ quiz.currentIndex + 1 }} / {{ quiz.questions.length }}
+                </div>
+                <div class="mb-3">
+                  <span v-if="quiz.mode === 'ko-en'" class="badge bg-info">
+                    <i class="bi bi-translate"></i> 번역
+                  </span>
+                  <span v-else class="badge bg-info">
+                    <i class="bi bi-translate"></i> 번역
+                  </span>
+                </div>
+                <h4 class="text-primary">
+                  <strong
+                    >{{ quiz.mode === 'ko-en' ? currentQuestion?.ko :
+                    currentQuestion?.en }}</strong
+                  >
+                </h4>
+              </div>
+
+              <!-- 답 입력 -->
+              <form @submit.prevent="submitAnswer" class="mb-4">
+                <div class="mb-3">
+                  <label for="answer-input" class="form-label"
+                    >답을 입력하세요</label
+                  >
+                  <div class="input-group">
+                    <input
+                      id="answer-input"
+                      type="text"
+                      class="form-control form-control-lg"
+                      v-model="quiz.userAnswer"
+                      @keyup.enter="submitAnswer"
+                      placeholder="답 입력..."
+                      :disabled="loading"
+                    />
+                    <button
+                      type="submit"
+                      class="btn btn-primary"
+                      :disabled="loading || !quiz.userAnswer.trim()"
+                    >
+                      <i class="bi bi-check-circle"></i> 제출
+                    </button>
+                  </div>
+                </div>
+              </form>
+
+              <!-- 결과 -->
+              <div v-if="quiz.result" class="mb-4">
+                <div
+                  v-if="quiz.result.correct"
+                  class="alert alert-success"
+                  role="alert"
+                >
+                  <i class="bi bi-check-circle-fill"></i>
+                  <strong> 정답입니다! 🎉</strong>
+                  <p
+                    v-if="quiz.result.nextReviewAt"
+                    class="mb-0 mt-2 small text-muted"
+                  >
+                    다음 복습: {{ quiz.result.nextReviewAt }}
+                  </p>
+                </div>
+                <div v-else class="alert alert-danger" role="alert">
+                  <i class="bi bi-x-circle-fill"></i>
+                  <strong> 틀렸습니다.</strong>
+                  <p class="mb-0 mt-2">
+                    <strong>정답:</strong> {{ quiz.result.correctAnswer }}
+                  </p>
+                  <p
+                    v-if="quiz.result.nextReviewAt"
+                    class="mb-0 small text-muted"
+                  >
+                    다음 복습: {{ quiz.result.nextReviewAt }}
+                  </p>
                 </div>
 
-                <!-- 🔹 정답 확인 후 정의 보여주기 -->
+                <!-- 정의 표시 -->
                 <div
                   v-if="quiz.result.definitionKo || quiz.result.definitionEn"
-                  class="small"
-                  style="margin-top: 8px"
+                  class="card mt-3 bg-light"
                 >
-                  <div v-if="quiz.result.definitionKo">
-                    정의(한): {{ quiz.result.definitionKo }}
-                  </div>
-                  <div v-if="quiz.result.definitionEn">
-                    정의(영): {{ quiz.result.definitionEn }}
+                  <div class="card-body">
+                    <h6 class="card-subtitle mb-2">
+                      <i class="bi bi-book"></i> 뜻
+                    </h6>
+                    <p v-if="quiz.result.definitionKo" class="mb-2">
+                      <strong>한국어:</strong> {{ quiz.result.definitionKo }}
+                    </p>
+                    <p v-if="quiz.result.definitionEn" class="mb-0">
+                      <strong>영어:</strong> {{ quiz.result.definitionEn }}
+                    </p>
                   </div>
                 </div>
 
                 <button
-                  class="btn secondary"
-                  style="margin-top: 8px"
+                  class="btn btn-secondary btn-sm mt-3"
                   @click="nextQuestion"
                 >
-                  다음 문제
+                  <i class="bi bi-arrow-right"></i> 다음 문제
                 </button>
               </div>
             </div>
-          </div>
-          <p v-else class="small">
-            아직 퀴즈 문제가 없습니다. "오늘 복습 문제 불러오기"를 눌러보세요.
-          </p>
+            <div v-else class="alert alert-info">
+              <i class="bi bi-info-circle"></i> 아직 퀴즈 문제가 없습니다. "오늘
+              복습 문제 불러오기"를 눌러보세요.
+            </div>
+          </section>
 
-          <h2>내 용어 목록</h2>
-          <button class="btn secondary" @click="loadTerms" :disabled="loading">
-            새로고침
-          </button>
-          <p v-if="terms.length === 0" class="small">
-            등록된 용어가 없습니다. 아래에서 새로 추가해보세요.
-          </p>
-          <div v-else>
-            <div v-for="term in terms" :key="term.id" class="card">
-              <div class="term-ko">{{ term.ko }}</div>
-              <div class="term-en">{{ term.en }}</div>
-              <div v-if="term.definitionKo" class="small">
-                정의(한): {{ term.definitionKo }}
-              </div>
-              <div v-if="term.definitionEn" class="small">
-                정의(영): {{ term.definitionEn }}
-              </div>
-              <div v-if="term.tags && term.tags.length" class="small">
-                태그: {{ term.tags.join(', ') }}
-              </div>
+          <!-- 용어 관리 섹션 -->
+          <section class="mb-5">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h2><i class="bi bi-list-ul"></i> 등록된 용어</h2>
+              <button
+                class="btn btn-info"
+                @click="loadTerms"
+                :disabled="loading"
+              >
+                <i class="bi bi-arrow-clockwise"></i> 새로고침
+              </button>
             </div>
-          </div>
 
-          <h2 style="margin-top: 24px">새 용어 추가</h2>
-          <form @submit.prevent="addTerm">
-            <div class="field">
-              <label>한국어 용어 (필수)</label>
-              <input v-model="newTerm.ko" />
+            <div v-if="terms.length > 0" class="row">
+              <div
+                v-for="(term, index) in terms"
+                :key="term?.id || index"
+                class="col-md-6 mb-3"
+              >
+                <div v-if="term" class="card h-100 shadow-sm hover-shadow">
+                  <div class="card-body">
+                    <h5 class="card-title text-primary">
+                      <i class="bi bi-text-left"></i> {{ term.ko }}
+                    </h5>
+                    <p class="card-subtitle mb-2 text-muted">{{ term.en }}</p>
+                    <div v-if="term.definitionKo" class="mb-2">
+                      <small class="text-muted">
+                        <strong>뜻:</strong> {{ term.definitionKo }}
+                      </small>
+                    </div>
+                    <div v-if="term.tags && term.tags.length > 0">
+                      <span
+                        v-for="tag in term.tags"
+                        :key="tag"
+                        class="badge bg-info bg-opacity-75 me-1"
+                      >
+                        #{{ tag }}
+                      </span>
+                    </div>
+
+                    <!-- 학습 상태 표시 -->
+                    <div v-if="term?.stats" class="mt-3 small text-muted">
+                      <div class="d-flex flex-wrap align-items-center">
+                        <span class="badge bg-light text-dark me-2 mb-1">
+                          LV {{ term.stats.level ?? 0 }}
+                        </span>
+                        <span class="me-3 mb-1">
+                          ✅ {{ term.stats.correct ?? 0 }} / ❌ {{
+                          term.stats.wrong ?? 0 }}
+                        </span>
+                        <span v-if="term.stats.nextReviewAt" class="mb-1">
+                          <i class="bi bi-calendar-event"></i>
+                          다음 복습: {{ term.stats.nextReviewAt }}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="field">
-              <label>영어 용어 (필수)</label>
-              <input v-model="newTerm.en" />
+            <div v-else class="alert alert-info">
+              <i class="bi bi-info-circle"></i> 등록된 용어가 없습니다. 아래에서
+              새로 추가해보세요.
             </div>
-            <div class="field">
-              <label>정의 (한글)</label>
-              <textarea rows="2" v-model="newTerm.definitionKo"></textarea>
+            <div class="card-body">
+              <!-- 보기 모드 -->
+              <div v-if="editingTermId !== term?.id">
+                <h5 class="card-title text-primary">
+                  <i class="bi bi-text-left"></i> {{ term?.ko }}
+                </h5>
+                <p class="card-subtitle mb-2 text-muted">{{ term?.en }}</p>
+                <div v-if="term?.definitionKo" class="mb-2">
+                  <small class="text-muted">
+                    <strong>뜻:</strong> {{ term.definitionKo }}
+                  </small>
+                </div>
+                <div v-if="term?.tags && term.tags.length > 0">
+                  <span
+                    v-for="tag in term.tags"
+                    :key="tag"
+                    class="badge bg-info bg-opacity-75 me-1"
+                  >
+                    #{{ tag }}
+                  </span>
+                </div>
+
+                <!-- 학습 상태 표시 -->
+                <div v-if="term?.stats" class="mt-3 small text-muted">
+                  <div class="d-flex flex-wrap align-items-center">
+                    <span class="badge bg-light text-dark me-2 mb-1">
+                      LV {{ term.stats.level ?? 0 }}
+                    </span>
+                    <span class="me-3 mb-1">
+                      ✅ {{ term.stats.correct ?? 0 }} / ❌ {{ term.stats.wrong
+                      ?? 0 }}
+                    </span>
+                    <span v-if="term.stats.nextReviewAt" class="mb-1">
+                      <i class="bi bi-calendar-event"></i>
+                      다음 복습: {{ term.stats.nextReviewAt }}
+                    </span>
+                  </div>
+                </div>
+
+                <!-- 버튼 -->
+                <div class="mt-3 d-flex justify-content-end gap-2">
+                  <button
+                    class="btn btn-sm btn-outline-secondary"
+                    @click="startEdit(term)"
+                  >
+                    <i class="bi bi-pencil"></i> 수정
+                  </button>
+                  <button
+                    class="btn btn-sm btn-outline-danger"
+                    @click="deleteTerm(term)"
+                  >
+                    <i class="bi bi-trash"></i> 삭제
+                  </button>
+                </div>
+              </div>
+
+              <!-- 편집 모드 -->
+              <div v-else>
+                <div class="mb-2">
+                  <label class="form-label">한국어 용어</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    v-model="editTermForm.ko"
+                  />
+                </div>
+                <div class="mb-2">
+                  <label class="form-label">영어 용어</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    v-model="editTermForm.en"
+                  />
+                </div>
+                <div class="mb-2">
+                  <label class="form-label">한국어 정의</label>
+                  <textarea
+                    class="form-control"
+                    rows="2"
+                    v-model="editTermForm.definitionKo"
+                  ></textarea>
+                </div>
+                <div class="mb-2">
+                  <label class="form-label">영어 정의</label>
+                  <textarea
+                    class="form-control"
+                    rows="2"
+                    v-model="editTermForm.definitionEn"
+                  ></textarea>
+                </div>
+                <div class="mb-2">
+                  <label class="form-label">태그 (쉼표 구분)</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    v-model="editTermForm.tagsText"
+                  />
+                </div>
+                <div class="mt-3 d-flex justify-content-end gap-2">
+                  <button class="btn btn-sm btn-secondary" @click="cancelEdit">
+                    취소
+                  </button>
+                  <button
+                    class="btn btn-sm btn-primary"
+                    @click="saveEdit(term)"
+                    :disabled="loading"
+                  >
+                    <i class="bi bi-check-lg"></i> 저장
+                  </button>
+                </div>
+              </div>
             </div>
-            <div class="field">
-              <label>정의 (영문)</label>
-              <textarea rows="2" v-model="newTerm.definitionEn"></textarea>
+          </section>
+
+          <!-- 용어 추가 섹션 -->
+          <section class="mb-5">
+            <h2><i class="bi bi-plus-circle"></i> 새 용어 추가</h2>
+            <div class="card">
+              <form @submit.prevent="addTerm" class="card-body">
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="term-ko" class="form-label"
+                      >한국어 용어 *</label
+                    >
+                    <input
+                      id="term-ko"
+                      type="text"
+                      class="form-control"
+                      v-model="newTerm.ko"
+                      placeholder="예: 구독"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="term-en" class="form-label">영어 용어 *</label>
+                    <input
+                      id="term-en"
+                      type="text"
+                      class="form-control"
+                      v-model="newTerm.en"
+                      placeholder="예: subscription"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="def-ko" class="form-label">한국어 정의</label>
+                    <textarea
+                      id="def-ko"
+                      class="form-control"
+                      rows="2"
+                      v-model="newTerm.definitionKo"
+                      placeholder="한국어 뜻 설명"
+                    ></textarea>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="def-en" class="form-label">영어 정의</label>
+                    <textarea
+                      id="def-en"
+                      class="form-control"
+                      rows="2"
+                      v-model="newTerm.definitionEn"
+                      placeholder="English meaning"
+                    ></textarea>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="tags" class="form-label"
+                    >태그 (쉼표로 구분)</label
+                  >
+                  <input
+                    id="tags"
+                    type="text"
+                    class="form-control"
+                    v-model="newTerm.tagsText"
+                    placeholder="payment, subscription, finance"
+                  />
+                  <small class="text-muted"
+                    >쉼표로 구분하여 여러 태그를 입력할 수 있습니다.</small
+                  >
+                </div>
+                <button
+                  type="submit"
+                  class="btn btn-success w-100"
+                  :disabled="loading || !newTerm.ko || !newTerm.en"
+                >
+                  <i class="bi bi-plus-circle"></i>
+                  {{ loading ? '추가 중...' : '용어 추가하기' }}
+                </button>
+              </form>
             </div>
-            <div class="field">
-              <label>태그 (쉼표로 구분)</label>
-              <input
-                v-model="newTerm.tagsText"
-                placeholder="예: payment, subscription"
-              />
-            </div>
-            <button class="btn" type="submit" :disabled="loading">추가</button>
-          </form>
+          </section>
         </div>
       </div>
     </div>
 
     <!-- Vue 3 CDN -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
-    <!-- 앱 스크립트 -->
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- App JS -->
     <script src="./app.js"></script>
   </body>
 </html>
